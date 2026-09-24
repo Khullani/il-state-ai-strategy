@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Khullani M. Abdullahi, JD">
-    <title>What Illinois Can Learn from the Netherlands – AI Ecosystem Development Strategies</title>
+    <title>Illinois AI Strategy After the Cabinet | Techné AI</title>
+    <meta name="description" content="An Illinois decision brief updated September 24, 2026: AI Cabinet, frontier safety, public assets, procurement, responsible innovation and lessons from the Netherlands.">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         /* ==========================================================================
            Design System
            ========================================================================== */
@@ -51,8 +53,6 @@
             --shadow-lg: 0 12px 40px rgba(26,10,46,0.12), 0 4px 12px rgba(26,10,46,0.06);
             --shadow-xl: 0 24px 60px rgba(26,10,46,0.16), 0 8px 20px rgba(26,10,46,0.08);
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -732,9 +732,10 @@
         @media print {
             .cover { min-height: 100vh; page-break-after: always; }
             .toc-page { page-break-after: always; }
-            section { page-break-inside: avoid; }
+            section { break-inside: auto; }
             h1, h2, h3 { page-break-after: avoid; }
-            .callout, .figure, table { page-break-inside: avoid; }
+            .callout, .figure, .decision-card, .timeline > div, table tr { break-inside: avoid; }
+            .table-scroll { overflow: visible !important; }
             body { background: var(--white); }
             a { color: var(--text); }
             @page { margin: 0.75in; }
@@ -755,1129 +756,218 @@
             .toc-grid { grid-template-columns: 1fr; }
             .barrow { grid-template-columns: 1fr; gap: 4px; }
         }
+
+        /* Updated decision-brief components */
+        html { scroll-behavior: smooth; }
+        .content a:not(.logo) { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        .content a:focus-visible, .toc-page a:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
+        sup { margin-left: 1px; }
+        sup a { text-decoration: none; }
+        .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-md); }
+        .table-scroll table { margin: 20px 0 32px; min-width: 660px; }
+        .decision-table { min-width: 790px !important; }
+        .decision-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin: 30px 0; }
+        .decision-card { background: var(--gray-50); border: 1px solid var(--border); border-top: 4px solid var(--secondary); padding: 24px; border-radius: var(--radius-md); }
+        .decision-card:nth-child(even) { border-top-color: var(--accent); }
+        .decision-card h3 { margin: 8px 0; font-size: 17px; }
+        .decision-card p { font-size: 14px; line-height: 1.65; margin: 0; }
+        .decision-id { color: var(--accent); font-weight: 800; font-size: 11px; letter-spacing: 1.2px; }
+        .timeline { border-left: 2px solid var(--gray-150); margin: 26px 0 0 10px; padding-left: 30px; }
+        .timeline > div { position: relative; padding-bottom: 28px; }
+        .timeline > div::before { content: ''; position: absolute; width: 13px; height: 13px; border: 3px solid var(--secondary); border-radius: 50%; background: white; top: 4px; left: -37px; }
+        .timeline span { display: block; color: var(--accent); font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
+        .timeline h3 { margin: 6px 0; }
+        .timeline p { margin-bottom: 0; }
+        .footer-note { margin-top: 10px; display: inline-block; }
+        @media (max-width: 768px) {
+            .cover-header, .cover-footer { gap: 16px; }
+            .cover-badge { font-size: 9px; letter-spacing: 1px; padding: 5px 10px; }
+            .cover-visual { width: 80px; height: 80px; }
+            .toc-section:nth-child(even) { padding-left: 0; border-left: none; }
+            .decision-grid { grid-template-columns: 1fr; }
+            .table-scroll { margin-right: -24px; padding-right: 24px; }
+        }
+        @media print {
+            html { scroll-behavior: auto; }
+            .decision-grid { gap: 10px; }
+            .decision-card { box-shadow: none; }
+            .table-scroll table { min-width: 0; font-size: 9.5px; box-shadow: none; }
+            .table-scroll th, .table-scroll td { padding: 7px 8px; }
+            .decision-table { min-width: 0 !important; }
+            .content { padding: 32px 0; }
+            .toc-page { padding: 32px 0; }
+            .ref a { word-break: break-word; }
+        }
     </style>
 </head>
 
 <body>
-
-<!-- ============================================================
-     COVER PAGE
-     ============================================================ -->
-<div class="cover">
-    <svg class="cover-geo" viewBox="0 0 600 800" fill="none">
-        <line x1="0" y1="0" x2="600" y2="800"/>
-        <line x1="100" y1="0" x2="600" y2="600"/>
-        <line x1="200" y1="0" x2="600" y2="400"/>
-        <line x1="300" y1="0" x2="600" y2="200"/>
-        <line x1="0" y1="200" x2="400" y2="800"/>
-        <line x1="0" y1="400" x2="200" y2="800"/>
-        <circle cx="400" cy="400" r="120" stroke="white" stroke-width="0.5" fill="none"/>
-        <circle cx="400" cy="400" r="80" stroke="white" stroke-width="0.5" fill="none"/>
-    </svg>
-
-    <div class="cover-header">
-        <div class="logo">Techn&eacute;<span>AI</span></div>
-        <div class="cover-badge">White Paper</div>
-    </div>
-
+<div class="cover" id="top">
+    <svg class="cover-geo" viewBox="0 0 500 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><line x1="0" y1="0" x2="500" y2="800"/><line x1="100" y1="0" x2="500" y2="630"/><line x1="240" y1="0" x2="500" y2="410"/><line x1="0" y1="250" x2="500" y2="800"/></svg>
+    <div class="cover-header"><div class="logo">Techn&eacute;<span>AI</span></div><span class="cover-badge">Illinois decision brief</span></div>
     <div class="cover-main">
-        <div class="cover-tag">AI Ecosystem Development Series</div>
-        <h1 class="cover-title">What Illinois Can Learn from the Netherlands</h1>
-        <p class="cover-subtitle">Building a Coordinated AI Commercialization Ecosystem: A Comparative Analysis of Innovation Architecture, Technology Transfer, and Scale Pathways</p>
+        <div class="cover-tag">September 24, 2026 &bull; Updated edition</div>
+        <h1 class="cover-title">Illinois AI Strategy<br>After the Cabinet</h1>
+        <p class="cover-subtitle">Four decisions for a state that must govern frontier risk, protect public assets, and convert research into economic value. A Netherlands comparison for implementation, not imitation.</p>
     </div>
-
-    <div class="cover-footer">
-        <div class="cover-meta">
-            <strong>Author:</strong> Khullani M. Abdullahi, JD<br>
-            Founder, Techn&eacute; AI & BoardSight AI | Host of AI in Chicago Podcast<br><br>
-            <strong>Date:</strong> March 2026
-        </div>
-        <div class="cover-visual">
-            <svg viewBox="0 0 140 140" fill="none">
-                <circle cx="70" cy="70" r="64" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-                <circle cx="70" cy="70" r="48" stroke="rgba(180,77,224,0.35)" stroke-width="2"/>
-                <circle cx="70" cy="70" r="32" stroke="rgba(180,77,224,0.25)" stroke-width="1.5"/>
-                <circle cx="70" cy="70" r="16" fill="rgba(180,77,224,0.25)"/>
-                <circle cx="70" cy="70" r="6" fill="#b44de0"/>
-                <path d="M70 6 L70 28 M70 112 L70 134 M6 70 L28 70 M112 70 L134 70" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                <path d="M24 24 L40 40 M100 100 L116 116 M24 116 L40 100 M100 40 L116 24" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            </svg>
-        </div>
-    </div>
+    <div class="cover-footer"><div class="cover-meta"><strong>Khullani M. Abdullahi, JD</strong><br>Founder &amp; Principal, Techn&eacute; AI<br><strong>Evidence cutoff:</strong> September 24, 2026</div>
+    <div class="cover-visual" aria-hidden="true"><svg viewBox="0 0 140 140" fill="none"><circle cx="70" cy="70" r="64" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/><circle cx="70" cy="70" r="48" stroke="rgba(180,77,224,.35)" stroke-width="2"/><circle cx="70" cy="70" r="32" stroke="rgba(180,77,224,.25)" stroke-width="1.5"/><circle cx="70" cy="70" r="16" fill="rgba(180,77,224,.25)"/><circle cx="70" cy="70" r="6" fill="#b44de0"/><path d="M70 6 L70 28 M70 112 L70 134 M6 70 L28 70 M112 70 L134 70" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/></svg></div></div>
 </div>
 
-<!-- ============================================================
-     TABLE OF CONTENTS PAGE
-     ============================================================ -->
-<div class="toc-page">
-    <h2>Table of Contents</h2>
-    <p class="toc-intro">This paper is written for a mixed audience: legislators, university leaders, civic and private partners. Throughout, the emphasis is practical&mdash;how to convert research excellence into durable economic impact while maintaining public trust.</p>
-
+<nav class="toc-page" aria-label="Report contents"><h2>Contents</h2><p class="toc-intro">A decision brief for the Governor's AI Cabinet, executive agencies, the General Assembly, universities, and economic-development partners. The numbered notes link to source documents.</p>
     <div class="toc-grid">
-        <div class="toc-section">
-            <span class="toc-section-number">1</span>
-            <div>
-                <a href="#executive-summary">Executive Summary</a>
-                <p>Core findings, divergence evidence, and five state-implementable policy moves.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">2</span>
-            <div>
-                <a href="#why-this-matters">Why This Matters Now</a>
-                <p>The dual mandate: competing for upside while building guardrails.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">3</span>
-            <div>
-                <a href="#methodology">Methodology</a>
-                <p>Key terms, theory of change, analytic framework, and evidence standard.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">4</span>
-            <div>
-                <a href="#baseline">Comparative Baseline</a>
-                <p>Scale and innovation indicators for Illinois and the Netherlands.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">5</span>
-            <div>
-                <a href="#dutch-architecture">The Dutch Model</a>
-                <p>TTT.AI, IP deal terms, AIC4NL, and the Wennink Report mechanisms.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">6</span>
-            <div>
-                <a href="#illinois-today">Illinois Today</a>
-                <p>Fragmented excellence&mdash;assets, gaps, and where friction concentrates.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">7</span>
-            <div>
-                <a href="#design-principles">Design Principles</a>
-                <p>Five principles to guide Illinois&rsquo; ecosystem architecture.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">8</span>
-            <div>
-                <a href="#policy-moves">Policy Moves</a>
-                <p>Detailed implementation playbook with lead owners, authority, budgets, and timelines.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">9</span>
-            <div>
-                <a href="#governance-trust">Governance &amp; Trust</a>
-                <p>BIPA, employment AI laws, and governance as competitive advantage.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">10</span>
-            <div>
-                <a href="#projections">What Illinois Could Accomplish</a>
-                <p>Quantitative projections, peer benchmarks (MA, NL), three scenarios, and concrete 2031 targets.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">11</span>
-            <div>
-                <a href="#counterarguments">Limitations &amp; Counterarguments</a>
-                <p>Honest assessment, red-team questions answered, and what would strengthen this analysis.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">12</span>
-            <div>
-                <a href="#kpis">KPI Appendix</a>
-                <p>Practical scorecard for annual accountability.</p>
-            </div>
-        </div>
-
-        <div class="toc-section">
-            <span class="toc-section-number">13</span>
-            <div>
-                <a href="#references">References</a>
-                <p>Full numeric-citation bibliography with verified sources.</p>
-            </div>
-        </div>
+        <div class="toc-section"><span class="toc-section-number">1</span><div><a href="#decisions">Decisions now</a><p>The four choices that can organize the next 90 days.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">2</span><div><a href="#march-update">Since the March edition</a><p>Changes that make the earlier architecture obsolete.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">3</span><div><a href="#mandates">Authority and boundaries</a><p>Who already does what, and when duties begin.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">4</span><div><a href="#netherlands">What the Netherlands teaches</a><p>Coordination, IP, venture funding, and compute.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">5</span><div><a href="#illinois-assets">Illinois operating assets</a><p>Build from programs and infrastructure already here.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">6</span><div><a href="#decision-table">Decision and delivery table</a><p>Owner, authority, next deliverable, and date.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">7</span><div><a href="#roadmap">30 and 90 days; 2027 and 2028</a><p>A feasible sequence aligned to legal deadlines.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">8</span><div><a href="#measurement">Evidence and scorecard</a><p>Known baselines, missing data, and hypotheses.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">9</span><div><a href="#constraints">Constraints and alternatives</a><p>Jurisdiction, funding, federal policy, and comparison limits.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">10</span><div><a href="#method">Method and source map</a><p>Primary documents and claim-to-source guide.</p></div></div>
+        <div class="toc-section"><span class="toc-section-number">11</span><div><a href="#references">References</a><p>Dated, source-linked documents.</p></div></div>
     </div>
+</nav>
 
-    <div class="audience-box" style="margin-top: 48px;">
-        <p class="small" style="margin: 0;">
-            <b>Reader guide:</b> Legislators will find clear levers and accountability measures; university leaders will find commercialization process recommendations; civic and private partners will find adoption pathways and investment propositions.
-        </p>
+<main class="content">
+<section id="decisions"><h2><span class="section-number">1</span> Decisions now</h2>
+    <p>Illinois has crossed from planning to execution. On September 22, Executive Order 2026-07 created an <strong>AI Cabinet</strong> to advise on AI incidents, threats to public assets, and practical choices on data centers, procurement, and remedies. It provides for expert appointments within 30 days, DoIT administrative support, and a sunset no later than December 31, 2027.<sup><a href="#ref-1">[1]</a></sup> July's AI Safety Measures Act adds a separate, narrow statutory framework for <em>large frontier developers</em>, with a 2027 disclosure and fee gate and key framework and third-party audit duties beginning in 2028.<sup><a href="#ref-2">[2]</a></sup></p>
+    <div class="callout"><div class="kicker">Recommendation in one sentence</div><p>Give the Cabinet a short, public, evidence-led safety workplan; use DCEO, DPI, and the Illinois Innovation Network to run a distinct, voluntary commercialization track; connect the two where procurement, data centers, workforce, and responsible deployment require joint judgment.</p></div>
+    <h3>Four decisions for the Cabinet's first meetings</h3>
+    <div class="decision-grid">
+      <div class="decision-card"><span class="decision-id">01 / INCIDENTS</span><h3>Choose a common incident protocol</h3><p>Agree on severity, secure reporting, lead agency, escalation, and after-action learning for threats to residents and infrastructure. Reconcile the Cabinet protocol with DoIT's existing agency reporting and IEMA-OHS's statutory frontier-developer role. Publish only an appropriately redacted public summary.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup><sup><a href="#ref-3">[3]</a></sup></p></div>
+      <div class="decision-card"><span class="decision-id">02 / PUBLIC ASSETS</span><h3>Prioritize systems that matter most</h3><p>Ask DoIT and participating agencies to reconcile the AI inventory already required by the 2025 policy with contracts, data access, and critical functions. Review gaps and exposure in public buildings, water, education, and information systems under the order.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-3">[3]</a></sup></p></div>
+      <div class="decision-card"><span class="decision-id">03 / DATA CENTERS</span><h3>Frame the incentive and grid choices</h3><p>Prepare options on safety conditions, grid and ratepayer impacts, water, and legal authority. DCEO stopped processing new data-center incentive applications as of July 1, while previously signed agreements remain in place; the Cabinet should assess options against that live pause, not assume an open incentive pipeline.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-4">[4]</a></sup></p></div>
+      <div class="decision-card"><span class="decision-id">04 / PROCUREMENT</span><h3>Define a reusable review package</h3><p>Ask DoIT and agency procurement counsel to produce a testing, data-rights, human-oversight, incident, recourse, and exit checklist within current law and the existing 30-day precommitment policy. Collect lessons from each pilot and contract.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-19">[19]</a></sup></p></div>
     </div>
-</div>
-
-<!-- ============================================================
-     MAIN CONTENT
-     ============================================================ -->
-<div class="content">
-
-    <!-- EXECUTIVE SUMMARY -->
-    <section id="executive-summary">
-        <h2><span class="section-number">1</span> Executive Summary</h2>
-
-        <p>Illinois and the Netherlands occupy a rare, high-stakes category: economies with the research depth, industrial diversity, and global connectivity to translate artificial intelligence into productivity growth, new firms, and strategic resilience. Both have annual economic outputs exceeding one trillion dollars&mdash;Illinois&rsquo;s gross state product was approximately $1.137 trillion in 2024 (preliminary, current dollars, BEA), comparable to the Netherlands&rsquo; approximately $1.21 trillion GDP (2024, current US$, World Bank).<sup>[1][2][17]</sup> Both regions anchor globally recognized research universities and both aspire to lead in AI. Yet their commercialization outcomes appear to diverge for structural reasons: the Netherlands has invested in ecosystem architecture&mdash;coordination mechanisms, standardized technology transfer practices, integrated pre-seed funding pathways, and national roadmapping&mdash;while Illinois largely relies on a set of excellent but more fragmented programs and institutions.</p>
-
-        <p>The Netherlands&rsquo; approach is not a single program or one-off initiative. It is a deliberately assembled system that answers a deceptively simple question: <em>How does an idea move from lab to market repeatedly, quickly, and responsibly?</em> That system is visible in three interlocking mechanisms. First, the Thematic Technology Transfer for AI (TTT.AI) framework functions as a shared venture-building funnel that sources academic AI innovations across multiple institutions. Second, Dutch universities have adopted standardized baseline intellectual property (IP) deal terms for spinoffs via the National IP Deal Term Principles&nbsp;2.0.<sup>[5][13][14]</sup> Third, AI Coalition 4 NL (AIC4NL)&mdash;formed in January 2025 from the merger of NL&nbsp;AIC and AiNed&mdash;illustrates the value of national coordination with dedicated funding of approximately &euro;204.5&nbsp;million from the National Growth Fund.<sup>[3][4][7]</sup></p>
-
-        <div class="callout">
-            <div class="kicker">Core Finding</div>
-            <p>The Netherlands&rsquo; apparent advantage is not research quality alone. It appears to be <strong>connective tissue</strong>: coordination, standardization, and integrated pipelines that likely contribute to turning research output into a more repeatable flow of products, companies, pilots, and scaled deployments.</p>
-            <p class="small">The implication for Illinois is practical. The state has world-class ingredients&mdash;universities, national labs, corporate demand, and civic innovation capacity&mdash;but needs a more cohesive operating system to convert those ingredients into durable AI competitiveness.</p>
-            <p class="small"><strong>Causal framing:</strong> The Dutch architecture is a plausible contributor to higher commercialization throughput; this paper hypothesizes three mechanisms (coordination, standardization, capital continuity) and proposes Illinois analogs. However, alternative explanations for outcome differences include: (a)&nbsp;national vs. state policy authority, (b)&nbsp;fundamentally different VC dynamics and exit markets, (c)&nbsp;EU vs. U.S. regulatory and procurement environments, (d)&nbsp;industry mix and geographic concentration (Amsterdam/Eindhoven corridor vs. Chicago/UIUC corridor), and (e)&nbsp;language, market size, and export orientation differences. Coordination likely still matters even after accounting for these factors, but this paper does not claim to isolate its causal effect.</p>
-        </div>
-
-        <h3>Divergence Evidence: Where Outcomes Appear to Differ</h3>
-
-        <p>The claim that commercialization outcomes diverge requires specificity. While comprehensive head-to-head data is unavailable, the following proxy metrics highlight structural differences in <em>how</em> each ecosystem organizes commercialization&mdash;not simply how much activity occurs. Illinois may generate comparable or greater raw startup volume, but the Dutch system exhibits more standardized, repeatable pathways from lab to market:</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 28%;">Metric (Proxy)</th>
-                    <th style="width: 28%;">Illinois (Available Data)</th>
-                    <th style="width: 28%;">Netherlands (Available Data)</th>
-                    <th style="width: 16%;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>University spinoffs/yr</strong></td>
-                    <td>694 university-affiliated startups over 5 years (2019&ndash;2023), ~139/yr; of which 107 were tech-transfer-based (ISTC&nbsp;2023)<sup>[33]</sup></td>
-                    <td>~200 academic spinoffs/yr across all Dutch universities (Techleap 2025)<sup>[37]</sup></td>
-                    <td>Different measurement bases and definitions; not directly comparable</td>
-                </tr>
-                <tr>
-                    <td><strong>Median time disclosure &rarr; spinoff</strong></td>
-                    <td>Not systematically tracked across institutions</td>
-                    <td>Targeted at &lt;12 months under TTT programs</td>
-                    <td>Key gap&mdash;proposed KPI</td>
-                </tr>
-                <tr>
-                    <td><strong>Pre-seed/seed AI deals</strong></td>
-                    <td>Chicago: $1.5B AI investment since 2023 (Crunchbase)</td>
-                    <td>&euro;8M TTT.AI public pre-seed + private co-investment (RVO/LUMO)</td>
-                    <td>U.S. private capital dwarfs Dutch public capital</td>
-                </tr>
-                <tr>
-                    <td><strong>Standardized IP terms</strong></td>
-                    <td>Institution-specific; no statewide baseline</td>
-                    <td>National IP Deal Term Principles 2.0 (Nov 2025)</td>
-                    <td>Structural difference confirmed</td>
-                </tr>
-                <tr>
-                    <td><strong>Pilot-to-procurement conversion</strong></td>
-                    <td>Ad hoc; no statewide tracking</td>
-                    <td>ELSA Labs (27) + Breaking Barriers structured pathways</td>
-                    <td>Structural difference confirmed</td>
-                </tr>
-                <tr>
-                    <td><strong>National/state coordination body</strong></td>
-                    <td>No single AI-specific statewide body</td>
-                    <td>AIC4NL (&euro;204.5M, 400+ organizations)</td>
-                    <td>Structural difference confirmed</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="callout-warn">
-            <div class="kicker">Interpretation Note</div>
-            <p>Several of these metrics are imperfect proxies with different measurement bases. The divergence claim rests primarily on <em>architectural</em> evidence&mdash;the presence or absence of standardized pathways&mdash;rather than audited outcome comparisons. Collecting comparable throughput data should be a first-order priority for any Illinois AI coalition.</p>
-        </div>
-
-        <h3>What Illinois Can Do&mdash;Five State-Implementable Moves</h3>
-
-        <p><strong>(1) Establish an Illinois AI Coalition.</strong> Create a statewide coordinating body spanning agencies, universities, national laboratories, workforce partners, and private adopters, and publish a measurable AI Action Plan.</p>
-
-        <p><strong>(2) Standardize spinoff/IP deal principles across institutions.</strong> Create baseline, market-aligned term principles and templates to reduce negotiation drag and improve investor confidence.</p>
-
-        <p><strong>(3) Build a shared venture-building funnel with integrated pre-seed (&ldquo;TTT-IL&rdquo;).</strong> Treat commercialization as a pipeline with defined milestones, team formation support, and a warm handoff to seed and Series&nbsp;A partners.</p>
-
-        <p><strong>(4) Institutionalize adoption pathways through paid pilots and procurement.</strong> Establish a pilot-to-procurement playbook so promising AI solutions can validate outcomes and scale responsibly.</p>
-
-        <p><strong>(5) Commission an Illinois proposition-based investment blueprint.</strong> Identify concrete, investable deep-tech projects in Illinois advantage sectors&mdash;healthcare, logistics, manufacturing, agriculture/food, and finance.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- WHY THIS MATTERS -->
-    <section id="why-this-matters">
-        <h2><span class="section-number">2</span> Why This Matters Now</h2>
-
-        <p>AI has moved from an innovation topic to an economic and governance reality. For Illinois, this creates a dual mandate: compete for the upside&mdash;productivity, new firm formation, better services&mdash;while building guardrails that sustain public trust. The risk is not that Illinois lacks talent or research. The risk is that, absent a more integrated commercialization and adoption architecture, Illinois may under-capture the economic returns on its research investments and industrial capacity, effectively subsidizing innovation that scales elsewhere.</p>
-
-        <p>Illinois&rsquo;s existing investment trajectory underscores the urgency. The state has committed over $500&nbsp;million to the Discovery Partners Institute and the Illinois Innovation Network, a system of 15 university-community-industry hubs projected to create 48,000 jobs and $19&nbsp;billion in economic impact over ten years.<sup>[16][27]</sup> P33 Chicago has catalyzed over $160&nbsp;million in follow-on funding for founders through its TechRise program and launched a $50&nbsp;million hyper-regional venture fund.<sup>[28]</sup> Chicago attracted $1.5&nbsp;billion in AI investment since 2023.<sup>[29]</sup> These are substantial assets&mdash;but they operate largely as parallel initiatives rather than as an integrated system.</p>
-
-        <p>The Netherlands&rsquo; recent policy and ecosystem activity offers a timely reference point precisely because it has tackled the &ldquo;middle layer&rdquo; between research and market&mdash;what many ecosystems experience as a valley of death. Consider how often promising academic AI remains stuck in a repeat pattern: a lab produces strong results; an invention disclosure is filed; a small team forms; founders spend months negotiating IP; early pilots happen through personal networks; and then the project stalls for lack of standardized pathways to adoption and follow-on capital.</p>
-
-        <p>The Netherlands has treated those seams as design problems. TTT.AI is a mechanism to make commercialization more repeatable across institutions. National IP deal principles reduce transaction costs. AIC4NL serves as an alignment engine that connects research, education, data, and applications with dedicated National Growth Fund support.</p>
-
-        <div class="callout">
-            <div class="kicker">A Practical Framing</div>
-            <p>The core question is not &ldquo;How do we do more AI?&rdquo; It is: <strong>How do we reduce time and uncertainty between discovery and deployment&mdash;while increasing accountability?</strong> That is a question legislators, universities, agencies, and private partners can answer together because each controls different parts of the pipeline.</p>
-        </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- METHODOLOGY -->
-    <section id="methodology">
-        <h2><span class="section-number">3</span> Methodology</h2>
-
-        <p>This paper uses a comparative ecosystem case-study approach. Rather than ranking places by a single metric, it examines the structures that turn scientific capacity into market outcomes&mdash;commercialization throughput, venture formation, adoption, and scale. Illinois and the Netherlands are treated as two innovation economies of comparable scale but different governance configurations.</p>
-
-        <h3>Key Terms</h3>
-
-        <p>For clarity, this paper uses the following terms consistently: <strong>Commercialization throughput</strong> refers to the rate at which research outputs (disclosures, prototypes, publications) convert into market-ready products, companies, or deployments. <strong>Venture-building funnel</strong> describes a structured, multi-stage pathway from research scouting through team formation, validation, and investment&mdash;as distinct from ad hoc incubation. <strong>Adoption pathways</strong> are formalized mechanisms (testbeds, paid pilots, procurement frameworks) through which AI solutions reach real-world deployment in organizations. <strong>Pilot-to-procurement</strong> is the transition from a time-limited, evaluation-focused pilot engagement to a sustained, contracted deployment. <strong>Spinoff</strong> refers to a new company formed around university-originated IP with a formal license agreement; <strong>startup</strong> is used more broadly to include ventures that may not originate from university IP.</p>
-
-        <h3>Theory of Change</h3>
-
-        <p>This paper&rsquo;s implicit model can be stated explicitly: <em>Coordination + standardized terms + capital continuity + structured adoption pathways + KPI accountability &rarr; faster, less risky, and more repeatable scaling of AI from lab to market.</em> Each policy move addresses a specific link in this chain. The IL-AIC provides coordination; IP principles reduce transaction costs; TTT-IL ensures capital continuity; pilot-to-procurement pathways create adoption pull; and the KPI framework creates accountability pressure. The system is designed to be mutually reinforcing&mdash;each element makes the others more effective&mdash;rather than five independent initiatives.</p>
-
-        <h3>Analytic Lens: Five Ecosystem Functions</h3>
-
-        <p>Findings and recommendations are organized around five functions that repeatedly predict ecosystem performance:</p>
-
-        <p><strong>(1) Coordination and governance:</strong> coalition structures, shared strategies, accountability.<br>
-        <strong>(2) Friction reduction in commercialization:</strong> standard terms, repeatable processes, shared infrastructure.<br>
-        <strong>(3) Venture building and capital continuity:</strong> pre-seed support, investor readiness, warm handoffs.<br>
-        <strong>(4) Adoption and scaling mechanisms:</strong> testbeds, pilots, procurement, launch customers.<br>
-        <strong>(5) Measurement and incentives:</strong> KPI dashboards, performance-based continuation, transparent reporting.</p>
-
-        <h3>Comparability Caveat</h3>
-
-        <p>Illinois is a U.S. state; the Netherlands is a sovereign nation. Some Dutch tools&mdash;particularly national investment instruments like the National Growth Fund&mdash;are not directly transferable. Furthermore, the U.S. venture capital ecosystem operates at a fundamentally different scale and velocity than European counterparts, meaning Illinois startups may already have access to private capital pathways that Dutch companies build public infrastructure to approximate. Recommendations here focus on state-implementable analogs: convening and coordination, public-university policy alignment, targeted funds and pilots, and accountability frameworks that do not require national authority.</p>
-
-        <h3>Theory of Change: Negative Case Test</h3>
-
-        <p>If coordination + standardization reliably accelerates commercialization, cases where coordination was attempted but poorly executed should show limited results. The UK Catapult Network provides a useful negative case. Launched in 2011 as a network of technology and innovation centres designed to bridge the &ldquo;valley of death&rdquo; between research and commercialization, the Catapults received over &pound;1.5&nbsp;billion in public funding over their first decade. However, a 2017 review by EY (commissioned by Innovate UK) found &ldquo;inconsistent implementation&rdquo; across centres, noted that several Catapults were &ldquo;overwhelmingly reliant on public funding&rdquo; rather than generating sustainable private income, and flagged a lack of consistent KPI accountability across the network.<sup>[40]</sup></p>
-
-        <p>The Catapult experience reinforces two design lessons embedded in this paper&rsquo;s recommendations: (a)&nbsp;coordination bodies must have built-in sunset reviews and performance-based continuation criteria (see Move&nbsp;1, 3-year sunset review), and (b)&nbsp;public investment must be structured to <em>leverage</em> private capital, not substitute for it (see Move&nbsp;3, matched private capital requirement). The Dutch TTT programs&rsquo; 10x leverage ratio and professional fund management (LUMO Labs) are specifically designed to avoid the Catapult failure mode.</p>
-
-        <h3>Evidence Standard</h3>
-
-        <p>This paper draws on publicly available sources: government reports, institutional statements, verified journalism, and international indices. Where claims rest on institutional descriptions rather than independently audited outcome data, this is noted. A full evidence map linking claims to sources appears in the References section.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- COMPARATIVE BASELINE -->
-    <section id="baseline">
-        <h2><span class="section-number">4</span> Comparative Baseline: Two Innovation Economies</h2>
-
-        <p>The case for comparison begins with scale. The Netherlands&rsquo; GDP is approximately $1.21&nbsp;trillion (2024, current US$, World Bank), placing it among the world&rsquo;s significant mid-sized innovation economies. Illinois&rsquo; gross state product is approximately $1.137&nbsp;trillion (2024 preliminary, current dollars, BEA), putting it in the same weight class.<sup>[2][17]</sup></p>
-
-        <div class="figure">
-            <div class="figbody">
-                <div class="kicker">Data Snapshot</div>
-                <h3>Scale and Innovation Indicators</h3>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 24%;">Metric</th>
-                            <th style="width: 26%;">Illinois</th>
-                            <th style="width: 26%;">Netherlands</th>
-                            <th>Interpretation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>GDP / GSP</strong></td>
-                            <td>~$1.137 trillion (BEA, preliminary)</td>
-                            <td>~$1.21 trillion (World Bank)</td>
-                            <td>Comparable economic scale</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Population</strong></td>
-                            <td>~12.7 million</td>
-                            <td>~18.1 million</td>
-                            <td>Netherlands ~42% larger</td>
-                        </tr>
-                        <tr>
-                            <td><strong>GDP per capita</strong></td>
-                            <td>~$90,500</td>
-                            <td>~$68,000</td>
-                            <td>Illinois higher per-capita output</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Global Innovation Index</strong></td>
-                            <td>Proxy: U.S. ranks #3 (country-level; Illinois is not separately ranked)</td>
-                            <td>Netherlands ranks #8</td>
-                            <td>GII ranks countries, not states; U.S. rank shown for context only</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Research universities</strong></td>
-                            <td>UIUC, Northwestern, UChicago</td>
-                            <td>TU Delft, TU Eindhoven, Utrecht</td>
-                            <td>Deep research capacity</td>
-                        </tr>
-                        <tr>
-                            <td><strong>National labs</strong></td>
-                            <td>Argonne, Fermilab</td>
-                            <td>TNO, CWI, KNMI</td>
-                            <td>Federal/national R&amp;D anchors</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI startups</strong></td>
-                            <td>694 university-affiliated startups over 5&nbsp;yrs (~139/yr; ISTC&nbsp;2023); 107 tech-transfer-based<sup>[33]</sup></td>
-                            <td>9,248 total startups; ~431 AI-specific (Techleap 2025)<sup>[37]</sup></td>
-                            <td>Different measurement bases; IL figure includes all disciplines, NL is tech ecosystem-wide</td>
-                        </tr>
-                        <tr>
-                            <td><strong>State/national innovation rank</strong></td>
-                            <td>#6 in U.S. for tech &amp; innovation (CNBC&nbsp;2025)</td>
-                            <td>#3 in EU for patent applications (EPO)</td>
-                            <td>Both regional leaders</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="caption">
-                Sources: BEA 2024 (preliminary) <sup>[17]</sup>; World Bank 2024 <sup>[2]</sup>; WIPO GII 2024 <sup>[11]</sup>; U.S. Census Bureau; CBS Netherlands; CNBC Top States 2025 <sup>[35]</sup>; EPO 2024; Tracxn <sup>[36]</sup>; ISTC 2023 <sup>[33]</sup>. Note: Illinois GDP from BEA; Netherlands GDP from World Bank. Secondary aggregators (TradingEconomics, TheGlobalEconomy) used as corroboration only.
-            </div>
-        </div>
-
-        <div class="callout-warn">
-            <div class="kicker">Note on per-capita figures</div>
-            <p>Illinois&rsquo;s per-capita GSP (~$90,500) is calculated by dividing nominal gross state product by state population. The BEA&rsquo;s published per-capita GDP figure ($70,443 for 2024) uses a different methodology based on real (inflation-adjusted) chained dollars. Both figures are legitimate but not directly comparable; we use nominal figures here for consistency with the Netherlands comparison, which also uses current-dollar GDP.</p>
-        </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- THE DUTCH MODEL -->
-    <section id="dutch-architecture">
-        <h2><span class="section-number">5</span> The Dutch Model: Ecosystem Architecture</h2>
-
-        <p>Understanding the Dutch approach requires moving past individual programs to examine how mechanisms interlock. Three specific components illustrate the architecture: the TTT.AI venture-building framework; standardized IP deal terms; and the national coordination provided by AI Coalition 4 NL (AIC4NL, formed from the merger of NL&nbsp;AIC and AiNed on January&nbsp;1, 2025).<sup>[3][4][6][7]</sup></p>
-
-        <h3>5.1 TTT.AI: A Structured Commercialization Pathway</h3>
-
-        <p>TTT.AI (Thematic Technology Transfer for AI) is the AI-focused track within the broader Dutch Thematic Technology Transfer (TTT) program, which spans multiple technology domains. TTT.AI operates as a structured pathway combining multi-institution research sourcing with selection and pre-seed investment, designed to move academic AI research toward market applications. Funded with &euro;8&nbsp;million from the Netherlands Enterprise Agency (RVO), it brings together the Universities of Amsterdam, Utrecht, Nijmegen, and Eindhoven, their affiliated university medical centers, and the National Research Institute for Mathematics and Computer Science (CWI).<sup>[6]</sup> LUMO Labs serves as the fund manager for the TTT.AI pre-seed fund (the AI Rise Fund) and was reappointed by RVO in December 2025 for a second fund cycle&mdash;a signal of program credibility. (Note: The stages described below reflect the program&rsquo;s published design; independently audited outcome data on completion rates and time-to-market are not yet publicly available.)</p>
-
-        <div class="figure">
-            <div class="figbody">
-                <div class="kicker">Pipeline Visualization</div>
-                <h3>TTT.AI Venture-Building Funnel</h3>
-
-                <div class="pipeline">
-                    <div class="stage">
-                        <b>Scouting</b>
-                        <p>Multi-institution research sourcing across 8+ partners</p>
-                    </div>
-                    <div class="stage">
-                        <b>Selection</b>
-                        <p>Investor-readiness screening &amp; validation</p>
-                    </div>
-                    <div class="stage">
-                        <b>Venture Building</b>
-                        <p>Team formation, business model, pilots</p>
-                    </div>
-                    <div class="stage">
-                        <b>Pre-seed</b>
-                        <p>Milestone-based funding via AI Rise Fund</p>
-                    </div>
-                    <div class="stage">
-                        <b>Follow-on</b>
-                        <p>Warm handoff to seed/VC partners</p>
-                    </div>
-                </div>
-            </div>
-            <div class="caption">
-                The funnel design emphasizes capital continuity&mdash;reducing the probability that ventures stall between stages. The broader TTT programs (across all themes, not just AI) have produced 150+ startups since 2019, with 40+ receiving follow-up funding and collectively leveraging over &euro;300&nbsp;million in additional capital&mdash;a 10x+ return on public investment.<sup>[38]</sup>
-            </div>
-        </div>
-
-        <h3>5.2 Standardized IP Deal Terms</h3>
-
-        <p>Dutch universities have published the National IP Deal Term Principles&nbsp;2.0 (November&nbsp;2025), building on an initial version from 2023. These are national principles intended to standardize negotiation baselines; institutions may retain domain-specific flexibility. The principles cover key negotiation points&mdash;IP allocation, equity structures, compensation frameworks, and anti-dilution provisions&mdash;so that founders and investors can move faster without re-litigating standard terms at each institution.<sup>[5][13][14]</sup> University medical centers (UMCs) are implementing a sector-specific variant. It is important to note that these are guidelines and principles, not mandatory uniform templates&mdash;they establish a shared floor for negotiations while preserving institutional discretion for unusual or domain-specific cases.</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Why This Matters</div>
-            <p>For founders, standard terms reduce uncertainty and delay. For universities, they reduce staff burden and improve throughput. For investors, they reduce deal risk and make opportunities comparable across institutions. Standard terms are essentially a <strong>friction-reduction technology</strong> for the commercialization process.</p>
-        </div>
-
-        <h3>5.3 AI Coalition 4 NL (AIC4NL): National Coordination</h3>
-
-        <p>Since January&nbsp;1, 2025, the Netherlands AI Coalition (NL&nbsp;AIC) and AiNed have joined forces under the unified structure AI Coalition 4 NL (AIC4NL). This body functions as a quadruple-helix coordination mechanism&mdash;government, research, business, and civil society&mdash;deploying approximately &euro;204.5&nbsp;million in National Growth Fund resources across four domains: knowledge and innovation, talent development, AI system deployment, and ecosystem collaboration.<sup>[3][7]</sup></p>
-
-        <p>Key instruments include Innovation Labs for applied research, ELSA Labs (27 established) for responsible AI development across sectors including healthcare, defense, and transportation, Fellowship Grants for top researchers, and the Breaking Barriers program for startups and scale-ups.<sup>[7]</sup></p>
-
-        <h3>5.4 The Wennink Report: Investment at Scale</h3>
-
-        <p>Published in December 2025 by Peter Wennink (former ASML CEO), &ldquo;The Road to Future Prosperity&rdquo; proposes a national investment strategy of &euro;151&ndash;187&nbsp;billion over ten years across four strategic technology domains, with digitalization and AI as the first priority. The report calls for a National Investment Bank (NIB) and a National Agency for Breakthrough Innovation (NABI)&mdash;institutional infrastructure designed to sustain investment commitment across political cycles.<sup>[4][15]</sup></p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- ILLINOIS TODAY -->
-    <section id="illinois-today">
-        <h2><span class="section-number">6</span> Illinois Today: Fragmented Excellence</h2>
-
-        <p>Illinois has extraordinary assets. The state&rsquo;s research universities anchor deep capability in computer science, machine learning, and domain AI. UIUC&rsquo;s Research Park and EnterpriseWorks have supported over 350 startups since their founding; portfolio companies have collectively raised over $1.4&nbsp;billion in venture capital.<sup>[10]</sup> Illinois also benefits from two world-class national laboratories&mdash;Argonne and Fermilab&mdash;major health systems, manufacturing density, and an economy that can provide real-world adoption environments across sectors.</p>
-
-        <div class="stat-row">
-            <div class="stat-card">
-                <div class="stat-value">350+</div>
-                <div class="stat-label">UIUC startups supported</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">$1.4B+</div>
-                <div class="stat-label">VC raised by portfolio cos.</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">#6</div>
-                <div class="stat-label">U.S. state for tech &amp; innovation</div>
-            </div>
-        </div>
-
-        <p>The state&rsquo;s federal research infrastructure is a distinct advantage with no Dutch parallel in scale. Argonne National Laboratory runs AI programs spanning privacy-preserving federated learning, energy-efficient foundation models, and the Chain Reaction Innovations program for clean-energy startups. Fermilab deploys AI for accelerator operations, anomaly detection, and particle physics analysis.<sup>[30][31]</sup> Illinois is also positioning itself as a national quantum computing hub, with over $500&nbsp;million in state investment anchoring the Illinois Quantum and Microelectronics Park on Chicago&rsquo;s South Side.<sup>[32]</sup></p>
-
-        <p>And yet, these assets often function more like a constellation than a system. Programs exist, but linkages across programs are not always formalized. Each university has its own technology transfer practices and IP negotiation habits. Pilot pathways can be highly relationship-driven. The Illinois Innovation Network&rsquo;s 15 hubs and P33&rsquo;s Chicago-focused programs represent significant capacity, but cross-institution coordination for AI commercialization specifically remains underdeveloped relative to the state&rsquo;s potential.</p>
-
-        <div class="callout">
-            <div class="kicker">Diagnostic: Where Friction Concentrates</div>
-            <p>Illinois&rsquo; challenge is not a lack of excellence. It is a lack of system-wide repeatability. The friction tends to concentrate in three transition points:</p>
-            <p class="small"><strong>(1) Lab &rarr; company</strong> (variable IP terms and negotiation timelines); <strong>(2) company &rarr; pilot</strong> (adoption depends on informal networks rather than structured pathways); <strong>(3) pilot &rarr; scale</strong> (capital continuity and &ldquo;warm handoffs&rdquo; are inconsistent across institutions).</p>
-        </div>
-
-        <h3>A Comparative Illustration</h3>
-
-        <p>Imagine a research team develops a breakthrough model that dramatically improves a high-value workflow&mdash;say, clinical triage, supply chain forecasting, or manufacturing quality control. In the Netherlands, the innovation might be scouted into TTT.AI&rsquo;s multi-institution funnel, screened for investor readiness, matched to venture builders, supported with pre-seed capital tied to milestones, and paired with ELSA Lab partners for responsible deployment pilots.</p>
-
-        <p>In Illinois, the same innovation may succeed through excellence and hustle&mdash;by leveraging a strong incubator, a committed tech transfer team, and founders who can navigate IP negotiations. But the pathway can vary widely by institution and network access. The consequence is not that Illinois fails; the consequence is that Illinois wins inconsistently and at lower throughput than its underlying capacity should allow.</p>
-
-        <div class="callout-warn">
-            <div class="kicker">Important caveat</div>
-            <p>This illustration is structural, not outcome-based. We lack comparative data on median time-from-disclosure-to-spinoff or commercialization conversion rates for both regions. The argument rests on architectural analysis&mdash;the presence or absence of standardized pathways&mdash;rather than audited performance metrics. Strengthening this comparison with such data is a priority recommendation (see Section 11).</p>
-        </div>
-
-        <h3>Illinois&rsquo; Workforce Foundation</h3>
-
-        <p>Any projection of Illinois&rsquo; AI potential must account for its workforce depth. The Chicago metropolitan area alone employs over 99,000 workers in technology-intensive occupations, generating approximately $39.3&nbsp;billion in direct tech sector output (CompTIA Cyberstates 2025).<sup>[43]</sup> Illinois universities collectively produce more than 45,000 STEM degrees annually&mdash;a pipeline that feeds both local employers and the broader national AI talent market.</p>
-
-        <p>Yet workforce strength also highlights the commercialization gap. Illinois trains talent at scale but does not always retain it in Illinois-based ventures. The ISTC 2023 report found that of 694 university-affiliated startups created over five years, the ventures generated only 2,093 direct jobs&mdash;roughly 3 jobs per startup&mdash;suggesting that many early ventures remain small or relocate for follow-on capital and customer access.<sup>[33]</sup> By comparison, the Netherlands&rsquo; Techleap 2025 data shows a scaleup ratio of 21.5% (companies reaching &euro;1M+ revenue or &euro;1M+ funding), which itself lags the EU average of 23% and the U.S. average of 54%.<sup>[37]</sup></p>
-
-        <p>The workforce dimension reinforces the central thesis: Illinois has the <em>inputs</em>&mdash;talent, research output, industrial demand&mdash;but needs better <em>connective tissue</em> to convert those inputs into retained companies, scaled ventures, and high-quality jobs within the state. The IL-AIC&rsquo;s workforce working group (Move&nbsp;1) should prioritize three interventions: (a)&nbsp;AI-specific credential and reskilling pathways aligned with employer demand, modeled on the Dutch AIC4NL talent development programs; (b)&nbsp;retention incentives (e.g., state R&amp;D tax credits, co-working space subsidies) for startups that maintain Illinois headquarters through Series&nbsp;A; and (c)&nbsp;workforce diversity metrics tracked as part of the KPI framework, ensuring that the AI economy reflects Illinois&rsquo; demographic breadth.</p>
-
-        <div class="stat-row">
-            <div class="stat-card">
-                <div class="stat-value">99K+</div>
-                <div class="stat-label">Tech workers (Chicago metro)</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">45K+</div>
-                <div class="stat-label">STEM degrees/yr (all IL institutions)</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">$39.3B</div>
-                <div class="stat-label">Tech sector output (IL)</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- DESIGN PRINCIPLES -->
-    <section id="design-principles">
-        <h2><span class="section-number">7</span> Design Principles for Illinois</h2>
-
-        <p>The most valuable learning from the Netherlands is not a checklist; it is a set of design principles that can guide Illinois decisions across agencies, universities, and partnerships.</p>
-
-        <h3>Principle 1: Coordination Is Infrastructure, Not Messaging</h3>
-        <p>Many ecosystems treat coordination as a branding exercise&mdash;announcements, summits, and task forces. The Dutch approach treats coordination as operational infrastructure: a standing coalition with clear scope, shared priorities, and mechanisms that persist beyond political cycles. AIC4NL&rsquo;s integration of 400+ organizations across four sectors demonstrates what institutional coordination looks like in practice.</p>
-
-        <h3>Principle 2: Standardization Lowers Transaction Costs</h3>
-        <p>Standard IP deal terms matter because they reduce uncertainty for founders, reduce staff burden for universities, and reduce deal risk for investors. The Dutch deal-term principles are essentially a friction-reduction technology&mdash;not a constraint on institutional autonomy, but a shared floor that accelerates routine transactions while preserving flexibility for unusual cases.</p>
-
-        <h3>Principle 3: Capital Continuity Is a Pipeline Property</h3>
-        <p>Many regions have &ldquo;seed funds&rdquo; or &ldquo;innovation grants&rdquo; but still struggle because ventures are not connected to follow-on pathways. The Dutch design links pre-seed support to professional fund governance (LUMO Labs managing the AI Rise Fund) and a structured path to later financing. The broader TTT programs&rsquo; 10x+ leverage ratio demonstrates this principle at work.</p>
-
-        <h3>Principle 4: Adoption Is Part of Venture Creation</h3>
-        <p>AI ventures rarely win on models alone. They win on deployment: data access, workflow integration, compliance, change management, and procurement. The Dutch ELSA Labs (27 across sectors) institutionalize the connection between AI development and responsible deployment. Illinois should treat pilot-to-procurement pathways as a competitiveness strategy, not just a procurement reform.</p>
-
-        <h3>Principle 5: Accountability Accelerates Learning</h3>
-        <p>The most sustainable coalitions and programs are those that can show outcomes transparently. Illinois should build KPI reporting into coalition and funding mechanisms from day one, not as a later add-on. The Wennink Report&rsquo;s emphasis on institutional accountability structures&mdash;not just funding amounts&mdash;reflects this principle.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- POLICY MOVES -->
-    <section id="policy-moves">
-        <h2><span class="section-number">8</span> Policy Moves and Implementation</h2>
-
-        <p>The policy moves below are designed for a mixed stakeholder environment. Each move includes the &ldquo;why,&rdquo; the mechanism, and what implementation looks like in practice.</p>
-
-        <h3>Move 1 &ndash; Establish an Illinois AI Coalition (IL-AIC)</h3>
-
-        <p><strong>Why:</strong> Illinois lacks a single statewide body that aligns AI priorities across government, universities, national laboratories, private adopters, and civic partners. Existing bodies (P33, DPI, IIN, DCEO&rsquo;s Office of Entrepreneurship) each cover part of the landscape but do not constitute a unified coordination mechanism for AI specifically.</p>
-
-        <p><strong>Mechanism:</strong> Create a chartered coalition with a board representing state agencies (including DCEO), major research universities (UIUC, Northwestern, UChicago), national labs (Argonne, Fermilab), workforce partners, and industry/civic adopters. Pair it with a small implementation office that publishes an annual AI Action Plan and manages KPI reporting.</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Implementation Detail</div>
-            <p><strong>Lead owner:</strong> Governor&rsquo;s Office or DCEO (via executive order or legislative charter). <strong>Co-owners:</strong> Major research universities, Argonne, Fermilab, P33, IIN, Intersect Illinois. <strong>Required authority:</strong> Executive order for initial charter; statute for sustained funding and permanence. <strong>Budget magnitude:</strong> $2&ndash;5M/yr for a lean implementation office (5&ndash;10 FTEs), separate from program funding. <strong>Enforceability:</strong> Voluntary coalition membership; participation required to access state AI pilot funding and procurement pathways (soft power). <strong>What prevents &ldquo;another task force&rdquo;:</strong> Dedicated staff, annual public reporting with KPIs, sunset review at 3 years, and integration with (not duplication of) P33, IIN, and existing university consortia.</p>
-        </div>
-
-        <div class="callout callout-light">
-            <div class="kicker">Phased Timeline</div>
-            <p><strong>0&ndash;90 days:</strong> Charter drafted + interim board appointed (Governor&rsquo;s Office + DCEO convene). <strong>90&ndash;180 days:</strong> Working groups formed (commercialization, workforce, governance, adoption); KPI selection and baseline data collection begins. <strong>180&ndash;365 days:</strong> First pilots launched under statewide framework; first annual reporting cycle initiated. IL-AIC publishes a measurable Action Plan including commercialization throughput targets, adoption pilot priorities, workforce credential goals, data governance principles, and a clear funding and partnership map.</p>
-        </div>
-
-        <h3>Move 2 &ndash; Standardize Spinoff/IP Deal Principles</h3>
-
-        <p><strong>Why:</strong> Negotiating IP terms is a predictable bottleneck. When deal terms vary widely across institutions, the state&rsquo;s research output becomes harder to commercialize at scale.</p>
-
-        <p><strong>Mechanism:</strong> Convene major university technology transfer offices to publish Illinois Spinoff/IP Deal Term Principles&mdash;baseline templates and market-aligned defaults&mdash;with modular variations for specific domains (e.g., healthcare vs.&nbsp;manufacturing). The Dutch National IP Deal Term Principles&nbsp;2.0 provide a concrete model for scope and format.</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Implementation Detail</div>
-            <p><strong>Lead owner:</strong> IL-AIC working group + university TTO directors. <strong>Required authority:</strong> MOU among participating institutions (no statute required). <strong>Private university challenge:</strong> Northwestern and UChicago are not state-controlled and have their own governance. Realistic mechanism: voluntary adoption via MOU, with participation required to access TTT-IL pre-seed funds and state pilot procurement pathways. Start with public universities (UIUC, UIC, SIU, NIU) and willing privates, then expand as the framework demonstrates value. <strong>Budget:</strong> $200&ndash;500K for facilitation, legal review, and template development. <strong>Enforceability:</strong> Voluntary principles (not mandates), with incentive alignment through fund access and procurement eligibility.</p>
-        </div>
-
-        <h3>Move 3 &ndash; Launch a Shared Venture-Building Funnel (&ldquo;TTT-IL&rdquo;)</h3>
-
-        <p><strong>Why:</strong> Illinois has venture programs, but commercialization pipelines are often institution-specific. A shared funnel increases throughput and reduces duplication.</p>
-
-        <p><strong>Mechanism:</strong> Establish a cross-institution funnel with defined stages: scouting, selection, venture building, partner matching, pre-seed investment, pilot execution, and follow-on readiness. Appoint a professional fund manager (following the LUMO Labs model) and source deal flow from at least three major research institutions and both national labs.</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Implementation Detail</div>
-            <p><strong>Lead owner:</strong> IL-AIC + appointed professional fund manager (via competitive RFP). <strong>Required authority:</strong> State appropriation or public-private partnership structure. <strong>Budget magnitude:</strong> $15&ndash;30M initial fund (state + matched private capital); $1&ndash;2M/yr operating costs. <strong>What TTT-IL replaces vs. integrates:</strong> TTT-IL does not replace existing incubators (EnterpriseWorks, Polsky Center, The Garage) or accelerators. It adds a cross-institution scouting and selection layer and a shared pre-seed fund, connecting to existing programs rather than duplicating them. <strong>Enforceability:</strong> Fund participation is voluntary; institutions opt in by contributing deal flow and agreeing to baseline IP principles.</p>
-        </div>
-
-        <h3>Move 4 &ndash; Institutionalize Pilot-to-Procurement Pathways</h3>
-
-        <p><strong>Why:</strong> AI commercialization depends on deployment environments. Without standardized testbeds and procurement pathways, startups remain trapped in endless unpaid pilots that generate neither revenue nor validated outcomes.</p>
-
-        <p><strong>Mechanism:</strong> Establish a statewide framework for <strong>paid</strong> pilots with standard evaluation criteria, compliance requirements, and scaling rules. Pair pilots with clear outcome measures and a path to multi-year contracting. Model this on the Dutch approach of connecting AI ventures to institutional adopters through structured programs rather than ad hoc relationships.</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Procurement-Safe Design</div>
-            <p>Pilot-to-procurement pathways must address legitimate procurement law concerns. Key guardrails: <strong>(1)&nbsp;Standardized evaluation rubric</strong> with published criteria to prevent favoritism. <strong>(2)&nbsp;Pre-qualified vendor pool</strong> via open application process, reviewed annually. <strong>(3)&nbsp;Data security minimums</strong> (encryption, access controls, incident reporting) aligned with state IT policy. <strong>(4)&nbsp;Staged contracting:</strong> pilot (&le;$250K, &le;12 months) &rarr; limited deployment (&le;$1M, &le;24 months) &rarr; scaled procurement (competitive bid). <strong>(5)&nbsp;Public reporting</strong> of pilot outcomes, costs, and vendor performance (with appropriate confidentiality carveouts for trade secrets and security-sensitive details). <strong>(6)&nbsp;Competitive bid requirements</strong> preserved at each scaling stage; no automatic sole-source progression.</p>
-            <p><strong>Lead owner:</strong> DCEO + Chief Procurement Officer. <strong>Required authority:</strong> Executive order or amendment to state procurement code. <strong>Budget:</strong> $5&ndash;10M/yr pilot fund (state agencies contribute from existing IT budgets + dedicated appropriation). <strong>Who pays for pilots:</strong> Adopting agency (with co-funding from IL-AIC pilot fund for qualifying AI solutions).</p>
-        </div>
-
-        <h3>Move 5 &ndash; Commission an Illinois Investment Blueprint</h3>
-
-        <p><strong>Why:</strong> Strategy documents often fail because they describe ambitions without enumerating investable projects. The Wennink Report&rsquo;s strength is its specificity&mdash;&euro;151&ndash;187&nbsp;billion across four named technology domains with institutional mechanisms for deployment.</p>
-
-        <p><strong>Mechanism:</strong> Commission an Illinois blueprint that lists 30&ndash;60 propositions&mdash;specific projects, testbeds, infrastructure assets, or platform investments&mdash;organized by sector advantage (healthcare AI at Chicago medical centers, logistics AI leveraging O&rsquo;Hare and intermodal assets, manufacturing AI connected to the state&rsquo;s industrial base, agricultural AI through the iFAB hub).</p>
-
-        <div class="callout callout-light">
-            <div class="kicker">Implementation Detail</div>
-            <p><strong>Lead owner:</strong> IL-AIC (commissioning body) + external research team (university-based or consulting). <strong>Required authority:</strong> Appropriation for study ($500K&ndash;$1M). <strong>Timeline:</strong> 6&ndash;9 months from commission to publication. <strong>What makes this different from existing reports:</strong> Specificity. Each proposition should include: technology readiness level, capital requirement, institutional partners, timeline, and measurable success criteria. This is an investment prospectus, not an aspiration document.</p>
-        </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- GOVERNANCE & TRUST -->
-    <section id="governance-trust">
-        <h2><span class="section-number">9</span> Governance, Trust, and Risk</h2>
-
-        <p>A commercialization strategy that ignores trust is brittle. AI adoption raises legitimate concerns: discrimination, privacy, model security, transparency, and the reliability of AI-driven decisions in high-impact contexts. Illinois has already built one of the most active state-level AI governance frameworks in the country, anchored by several specific statutes:</p>
-
-        <p><strong>Public Act 103-0804 (HB&nbsp;3773)</strong> amends the Illinois Human Rights Act to regulate AI in employment decisions, effective January&nbsp;1, 2026. It requires employers using AI in hiring, promotion, and termination decisions to provide notice and comply with anti-discrimination standards.<sup>[8]</sup> Implementation is underway: the Illinois Department of Human Rights (IDHR) has drafted rules under &ldquo;Subpart&nbsp;J: Use of Artificial Intelligence in Employment&rdquo; that define compliance obligations, audit requirements, and employer notification procedures. As of early 2026, these rules have not yet been formally published for public comment, creating a window of regulatory ambiguity that IL-AIC could help resolve by convening stakeholder input.<sup>[39]</sup></p>
-
-        <p><strong>The Artificial Intelligence Video Interview Act (Public Act 101-0260)</strong> was among the first U.S. laws regulating AI in hiring, requiring employer disclosure and consent when AI analyzes video interviews.<sup>[9]</sup></p>
-
-        <p><strong>The Wellness and Oversight for Psychological Resources Act (WOPR, Public Act 104-0054)</strong>, codified at 225 ILCS 155 and effective August&nbsp;1, 2025, restricts AI use in behavioral health contexts.<sup>[9a]</sup></p>
-
-        <h3>The Biometric Information Privacy Act (BIPA): Illinois&rsquo; Privacy Differentiator</h3>
-
-        <p>Any serious discussion of Illinois AI governance must address the Biometric Information Privacy Act (BIPA, 740 ILCS 14), one of the nation&rsquo;s most consequential data privacy statutes.<sup>[9b]</sup> BIPA requires informed consent before collecting biometric identifiers (fingerprints, facial geometry, iris scans, voiceprints) and provides a private right of action with statutory damages. For AI deployment, BIPA has several implications:</p>
-
-        <p><strong>AI deployment constraints:</strong> Computer vision, facial recognition, and biometric authentication systems must navigate BIPA compliance, which adds cost and process for startups and deployers. <strong>Litigation landscape:</strong> Illinois has seen extensive BIPA litigation&mdash;settlements have reached tens of millions of dollars (e.g., Facebook/Meta&rsquo;s $650M settlement in 2021, Clearview AI&rsquo;s $51.75M settlement in 2024), and the private right of action with statutory damages of $1,000&ndash;$5,000 per violation creates material compliance exposure for companies deploying biometric AI at scale.<sup>[9b]</sup> This litigation burden is real and should not be minimized: it raises the cost of AI deployment in Illinois relative to states without comparable statutes, and some startups may choose to avoid biometric AI applications in Illinois entirely. <strong>Competitive advantage framing:</strong> That said, a predictable governance environment&mdash;even a strict one&mdash;can become an advantage if compliance expectations are clarified and stabilized. Companies that build BIPA-compliant AI products gain a regulatory head start as other jurisdictions adopt similar biometric privacy frameworks (Texas, Washington, and the EU&rsquo;s AI Act all impose biometric consent requirements). Illinois&rsquo; privacy posture signals to adopters and investors that the state takes data governance seriously, which can accelerate trust-dependent deployments in healthcare, finance, and public services. The key policy question is whether Illinois can convert BIPA from a litigation risk into a compliance moat&mdash;and that requires clearer guidance, safe harbors for good-faith compliance, and integration with IL-AIC governance recommendations.</p>
-
-        <p>The opportunity is to turn this governance ecosystem into an advantage. When an ecosystem creates clear compliance expectations, testing norms, and documentation standards, it becomes easier for adopters to buy and deploy responsibly. The Dutch ELSA Labs model&mdash;27 labs across sectors developing responsible AI practices in partnership with civil society&mdash;demonstrates how governance infrastructure can co-exist with, and even accelerate, commercialization.<sup>[7]</sup></p>
-
-        <div class="callout">
-            <div class="kicker">Public Trust as Competitive Advantage</div>
-            <p>Illinois can differentiate itself by being the place where AI solutions are not only invented, but <strong>deployed responsibly at scale</strong>. A well-run pilot-to-procurement pathway with strong governance can make Illinois a preferred testbed for high-impact AI&mdash;attracting companies, talent, and investment that value predictable compliance and credible deployment environments.</p>
-        </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- WHAT ILLINOIS COULD ACCOMPLISH -->
-    <section id="projections">
-        <h2><span class="section-number">10</span> What Illinois Could Accomplish: A Quantitative Projection</h2>
-
-        <p>The preceding sections establish that Illinois has world-class inputs&mdash;research depth, workforce scale, industrial diversity, federal laboratory infrastructure&mdash;but under-converts those inputs due to fragmented commercialization pathways. This section asks: <em>What would an integrated statewide AI strategy plausibly produce?</em> The projections below are grounded in Illinois baseline data, peer-state benchmarks, Dutch ecosystem outcomes, and macroeconomic AI impact estimates. Three scenarios&mdash;conservative, likely, and ambitious&mdash;bracket the range of plausible outcomes over a five-year horizon (2027&ndash;2031).</p>
-
-        <div class="callout">
-            <div class="kicker">Headline Aspiration</div>
-            <p><strong>By 2031, Illinois becomes the top AI commercialization ecosystem in the Midwest and a national top-five state for AI venture formation, deployment scale, and workforce readiness</strong>&mdash;measured by independently verifiable KPIs, not aspirational branding.</p>
-            <p class="small">This aspiration is achievable because Illinois already ranks #6 nationally for technology and innovation (CNBC 2025) and possesses research assets that peer states lack (two DOE national labs, three top-tier research universities, a $1.1T+ diversified economy). The gap is not capacity&mdash;it is coordination.</p>
-        </div>
-
-        <h3>Peer Benchmark: Massachusetts AI Hub</h3>
-
-        <p>Massachusetts provides the most direct U.S. peer benchmark. In February 2024, Governor Healey signed Executive Order 629 establishing the Massachusetts AI Strategic Task Force, which produced a comprehensive report recommending the creation of an &ldquo;MA AI Hub&rdquo; built on three pillars: Equity &amp; Values, Infrastructure, and Innovation &amp; Talent Ecosystem.<sup>[41]</sup> The task force comprised 26 members spanning government, academia, and industry, and recommended expanded compute access (including a state-supported MA Data Commons), strengthened research-to-startup pipelines, AI adoption support for small and medium enterprises, and workforce development programs.</p>
-
-        <p>Illinois should benchmark against&mdash;and aim to exceed&mdash;Massachusetts on three dimensions: (a)&nbsp;speed of institutional formation (MA went from executive order to published strategy in under 9 months; IL-AIC should match this pace); (b)&nbsp;breadth of coalition (MA&rsquo;s 26-member task force is a starting point; IL-AIC should target 50+ organizational members given the state&rsquo;s larger geography and more distributed assets); and (c)&nbsp;integration depth (MA&rsquo;s recommendations remain advisory; IL-AIC should embed accountability mechanisms from day one, including the KPI framework in Section 12).</p>
-
-        <h3>Dutch Ecosystem Benchmark: Techleap 2025 Data</h3>
-
-        <p>The Netherlands&rsquo; Techleap State of Dutch Tech 2025 report provides a sobering comparison point. Despite &euro;3.1&nbsp;billion in VC investment in 2024 and 9,248 startups in the ecosystem, the Dutch scaleup ratio stands at just 21.5%&mdash;below both the EU average (23%) and significantly below the U.S. average (54%).<sup>[37]</sup> The Netherlands&rsquo; domestic investment share has also fallen dramatically, from 61% to 15%, as international capital increasingly drives deals. Deeptech represents 35% of the Dutch ecosystem and attracted &euro;1.1&nbsp;billion in investment&mdash;a structural strength, but one that has not yet translated into proportional scaleup success.</p>
-
-        <p>This data yields two insights for Illinois. First, coordination alone does not guarantee scaling; the Netherlands&rsquo; own scaling bottleneck suggests that even well-architected ecosystems face persistent challenges in growing companies beyond the startup phase. Second, Illinois&rsquo; advantage in the U.S. venture capital ecosystem (where the scaleup ratio is 2.5x the Dutch rate) means that improved coordination could produce outsized returns precisely because the follow-on capital environment is already favorable. The Dutch system creates the pipeline; the U.S. capital market provides the scaling fuel. Illinois needs the former to fully exploit the latter.</p>
-
-        <h3>Projection Model: Baseline Assumptions</h3>
-
-        <p>The projections below rest on verifiable baseline data and explicitly stated growth assumptions. Where assumptions are uncertain, ranges are provided. The model does not assume new federal funding or national policy changes&mdash;only state-implementable actions described in Section&nbsp;8.</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 25%;">Baseline Metric</th>
-                    <th style="width: 25%;">Current Value (Source)</th>
-                    <th style="width: 50%;">Methodology Note</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>University startups/yr</strong></td>
-                    <td>~139/yr (ISTC 2023: 694 over 5 years)</td>
-                    <td>Includes all disciplines, all 12 ISTC partner institutions. AI-specific subset estimated at 15&ndash;25% based on national discipline mix.</td>
-                </tr>
-                <tr>
-                    <td><strong>Tech-transfer startups/yr</strong></td>
-                    <td>~21/yr (107 over 5 years; ISTC 2023)</td>
-                    <td>Formal IP-licensed spinoffs only. This is the metric most comparable to Dutch TTT output.</td>
-                </tr>
-                <tr>
-                    <td><strong>Total startup funding</strong></td>
-                    <td>$804M over 5 years (~$161M/yr; ISTC 2023)</td>
-                    <td>All university-affiliated startups, all funding stages.</td>
-                </tr>
-                <tr>
-                    <td><strong>AI investment (Chicago)</strong></td>
-                    <td>$1.5B since 2023 (~$750M/yr; Crunchbase)</td>
-                    <td>Broader AI market, not limited to university spinoffs.</td>
-                </tr>
-                <tr>
-                    <td><strong>Tech workforce (Chicago)</strong></td>
-                    <td>99,000+ (CompTIA 2025)</td>
-                    <td>Technology-intensive occupations, Chicago metro only.</td>
-                </tr>
-                <tr>
-                    <td><strong>STEM pipeline</strong></td>
-                    <td>45,000+ degrees/yr (all IL institutions)</td>
-                    <td>Bachelors through doctoral, all STEM fields.</td>
-                </tr>
-                <tr>
-                    <td><strong>Active startup rate</strong></td>
-                    <td>62% (ISTC 2023)</td>
-                    <td>430 of 694 startups still active at time of survey.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Five-Year Scenario Projections (2027&ndash;2031)</h3>
-
-        <p>Each scenario assumes all five policy moves are implemented, but differs in execution quality, political continuity, and external market conditions.</p>
-
-        <div class="figure">
-            <div class="figbody">
-                <div class="kicker">Projection Model</div>
-                <h3>Illinois AI Ecosystem: Three Scenarios</h3>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 22%;">Outcome Metric</th>
-                            <th style="width: 26%;">Conservative</th>
-                            <th style="width: 26%;">Likely</th>
-                            <th style="width: 26%;">Ambitious</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>New AI spinoffs/yr (by Y5)</strong></td>
-                            <td>25&ndash;35 AI-specific spinoffs/yr (vs. est. 21&ndash;35 baseline)</td>
-                            <td>40&ndash;60 AI-specific spinoffs/yr (2&ndash;3x baseline)</td>
-                            <td>70&ndash;100 AI-specific spinoffs/yr (approaching Dutch TTT output rate)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>TTT-IL portfolio companies (cumulative)</strong></td>
-                            <td>15&ndash;25 over 5 years</td>
-                            <td>30&ndash;50 over 5 years</td>
-                            <td>60&ndash;80 over 5 years (matching Dutch TTT pace of ~30/yr across all themes)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Follow-on capital leveraged</strong></td>
-                            <td>$50&ndash;100M (3&ndash;5x on public pre-seed)</td>
-                            <td>$150&ndash;300M (5&ndash;10x leverage)</td>
-                            <td>$400&ndash;700M (10x+ leverage, matching Dutch TTT ratio in a deeper VC market)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Paid pilots executed (cumulative)</strong></td>
-                            <td>30&ndash;50</td>
-                            <td>75&ndash;120</td>
-                            <td>150&ndash;200 (with 30%+ converting to scaled deployment)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Jobs created (direct, AI ventures)</strong></td>
-                            <td>500&ndash;1,000</td>
-                            <td>2,000&ndash;4,000</td>
-                            <td>5,000&ndash;8,000 (requires multiple scaleups reaching 50+ employees)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI contribution to IL GSP</strong></td>
-                            <td>$2&ndash;5B incremental (0.2&ndash;0.4% GSP uplift)</td>
-                            <td>$8&ndash;15B incremental (0.7&ndash;1.3% GSP uplift)</td>
-                            <td>$20&ndash;35B incremental (1.8&ndash;3.1% GSP uplift, consistent with Goldman Sachs 7% global AI GDP estimate applied to IL&rsquo;s AI-intensive sectors)<sup>[42]</sup></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Median IP deal cycle</strong></td>
-                            <td>15&ndash;20% reduction from baseline</td>
-                            <td>30&ndash;40% reduction (from est. 18 months to 10&ndash;12 months)</td>
-                            <td>50%+ reduction (approaching Dutch TTT target of &lt;12 months)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Coalition participation</strong></td>
-                            <td>25&ndash;40 organizations</td>
-                            <td>75&ndash;150 organizations</td>
-                            <td>200+ organizations (approaching Dutch AIC4NL scale of 400+)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="caption">
-                <strong>Scenario assumptions:</strong> Conservative = partial implementation, political disruption after Y2, flat VC market. Likely = full implementation with normal execution friction, moderate VC growth. Ambitious = strong execution, sustained political commitment, favorable AI market conditions. All scenarios assume $25&ndash;50M total public investment over 5 years (Moves 1&ndash;5 combined); differences are driven by execution quality and market conditions, not funding level. GSP uplift estimates derived from Goldman Sachs (2023) AI productivity model applied to Illinois&rsquo; sector mix (healthcare 8.9% of GSP, manufacturing 11.2%, financial services 7.8%), with adjustment factors for adoption rate and state-level capture.<sup>[42]</sup>
-            </div>
-        </div>
-
-        <div class="callout-warn">
-            <div class="kicker">Projection Integrity Note</div>
-            <p>These projections are scenario-based estimates, not forecasts. They are designed to bracket plausible outcomes and inform investment decisions&mdash;not to make promises. The &ldquo;likely&rdquo; scenario assumes competent execution of all five policy moves with normal institutional friction. Actual outcomes will depend on variables this paper cannot predict: federal policy shifts, national VC cycles, technology breakthroughs, and the quality of leadership at IL-AIC and partner institutions. The KPI framework (Section&nbsp;12) is designed to track progress against these projections and trigger course corrections.</p>
-        </div>
-
-        <h3>What Success Looks Like: Concrete Targets by 2031</h3>
-
-        <p>An integrated Illinois AI strategy should be measured against specific, independently verifiable targets. The following represent the &ldquo;likely&rdquo; scenario commitments that IL-AIC should adopt as its public accountability framework:</p>
-
-        <div class="compare-grid">
-            <div class="compare-card">
-                <h4>Venture Formation</h4>
-                <p>50+ new AI-specific ventures per year emerging from Illinois institutions by 2031, with at least 15 per year receiving institutional pre-seed investment through TTT-IL. Active rate target: 70%+ at 3 years post-formation (vs. 62% current baseline).</p>
-            </div>
-            <div class="compare-card">
-                <h4>Capital Leverage</h4>
-                <p>$150&ndash;300M in follow-on private capital mobilized by TTT-IL portfolio companies by 2031, representing 5&ndash;10x leverage on public pre-seed investment. At least 25% of capital raised should come from Illinois-based or Midwest-based investors.</p>
-            </div>
-            <div class="compare-card">
-                <h4>Deployment Scale</h4>
-                <p>100+ paid AI pilots executed through the statewide framework by 2031, with 30%+ converting to multi-year deployment contracts. At least 20 state agency deployments with published transparency documentation.</p>
-            </div>
-            <div class="compare-card">
-                <h4>Workforce &amp; Inclusion</h4>
-                <p>5,000+ direct AI-economy jobs created or retained in Illinois by 2031. AI workforce credential programs operating at 3+ institutions. Demographic diversity of TTT-IL founders reflects Illinois population within 10 percentage points on race, gender, and geography.</p>
-            </div>
-        </div>
-
-        <h3>The Return on Public Investment</h3>
-
-        <p>Under the &ldquo;likely&rdquo; scenario, total public investment across all five policy moves is approximately $25&ndash;50M over five years. Against projected outcomes of $150&ndash;300M in leveraged private capital, 2,000&ndash;4,000 direct jobs, and $8&ndash;15B in incremental GSP contribution, the implied return on public investment is substantial&mdash;conservatively 10&ndash;20x in direct capital leverage and significantly higher when including indirect economic multiplier effects. This is consistent with the Dutch TTT programs&rsquo; demonstrated 10x+ leverage ratio and with broader evidence on the returns to public R&amp;D investment.</p>
-
-        <p>The critical insight is that Illinois is not starting from zero. The state already has $1.5B+ in AI investment flowing through Chicago, 45,000+ STEM graduates per year, two national labs, and over $500M committed to DPI and IIN. The $25&ndash;50M in coordination and pipeline infrastructure is not the primary engine&mdash;it is the <em>connective tissue</em> that allows existing assets to work as a system rather than a collection of parallel programs.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- LIMITATIONS & COUNTERARGUMENTS -->
-    <section id="counterarguments">
-        <h2><span class="section-number">11</span> Limitations and Counterarguments</h2>
-
-        <p>Intellectual honesty requires acknowledging what this comparison can and cannot show, and where reasonable people might disagree with the paper&rsquo;s framing.</p>
-
-        <h3>The Coordination Assumption</h3>
-        <p>This paper hypothesizes that coordination mechanisms are a plausible contributor to better commercialization outcomes. The evidence is primarily architectural: the Dutch system has more standardized pathways, and standardization should reduce friction. However, we lack head-to-head outcome data comparing Dutch and Illinois commercialization throughput (e.g., median time from invention disclosure to spinoff formation, or conversion rates from pre-seed to Series&nbsp;A). The Dutch model is younger than many Illinois programs, and its long-term efficacy remains to be proven. Collecting and publishing such comparative data should be a priority for any coalition that forms.</p>
-
-        <h3>The Decentralization Counterargument</h3>
-        <p>Illinois&rsquo;s fragmented ecosystem may have advantages that centralized coordination could inadvertently suppress. U.S. university tech transfer offices operate in a competitive landscape where institutional autonomy drives experimentation. Stanford&rsquo;s model differs from MIT&rsquo;s, which differs from UIUC&rsquo;s&mdash;and this variation has produced world-leading innovation. Any coordination mechanism for Illinois should be designed as a <strong>shared floor, not a ceiling</strong>: establishing baseline standards while preserving room for institutional experimentation above that floor.</p>
-
-        <h3>The Capital Ecosystem Difference</h3>
-        <p>The U.S. venture capital ecosystem operates at a scale that dwarfs European counterparts. U.S.-based companies received $159&nbsp;billion of the $203&nbsp;billion invested globally in AI startups in 2025.<sup>[29]</sup> Illinois startups already have access to a depth of private capital that Dutch founders typically cannot match, which partially compensates for less structured public pathways. The Dutch emphasis on public pre-seed funding and government-backed venture structures addresses a genuine European funding gap&mdash;but Illinois may need different interventions focused more on <em>connecting</em> founders to existing capital than on <em>creating</em> new public capital pools.</p>
-
-        <h3>The State-vs-Nation Governance Gap</h3>
-        <p>The Netherlands can deploy sovereign tools&mdash;national growth funds, centralized education policy, unified regulatory frameworks&mdash;that Illinois cannot. While this paper focuses on state-implementable analogs, some Dutch mechanisms (particularly the scale of National Growth Fund investment) may not have realistic state-level equivalents without federal partnership. IL-AIC should be designed to leverage federal programs (NSF, DOE, EDA Tech Hubs) rather than attempting to replicate national-scale funding from state resources alone.</p>
-
-        <h3>Questions This Paper Should Answer for Skeptics</h3>
-
-        <p>The following questions represent the most likely challenges from a tough reviewer (legislator&rsquo;s staff, funder, or skeptical university counsel). We address each directly:</p>
-
-        <p><strong>1. What evidence proves Illinois underperforms its capacity?</strong> The Divergence Evidence table in Section&nbsp;1 presents proxy metrics. The strongest structural evidence is the absence of statewide standardized IP terms, a cross-institution venture funnel, or a unified AI coordination body&mdash;all of which the Netherlands has built. The performance claim is architectural, not yet outcome-verified; establishing baseline metrics is a first-order recommendation.</p>
-
-        <p><strong>2. Why the Netherlands and not another U.S. state or peer region?</strong> The Netherlands was chosen for comparable economic scale (~$1.2T GDP), research depth, and because its recent policy activity (TTT.AI, AIC4NL, IP principles, Wennink Report) provides concrete, transferable mechanism designs. U.S. state-to-state comparisons (e.g., Massachusetts, California) are valuable but would compare ecosystems within the same national policy environment, masking the structural innovations that a different governance model can reveal.</p>
-
-        <p><strong>3. What is the &ldquo;minimum viable IL-AIC&rdquo; and how do you prevent bureaucracy?</strong> See the phased timeline under Move&nbsp;1. The minimum viable version is: a chartered board, 5&ndash;10 FTE implementation office, annual public KPI reporting, and a 3-year sunset review. Bureaucracy risk is mitigated by tying participation to tangible benefits (fund access, procurement eligibility) and by publishing outcomes publicly.</p>
-
-        <p><strong>4. How do you get private universities to adopt IP principles?</strong> You don&rsquo;t mandate&mdash;you incentivize. Participation in TTT-IL pre-seed funds and state pilot procurement pathways requires adoption of baseline IP principles. Start with public universities and willing privates; expand as the framework demonstrates value. See Move&nbsp;2 implementation detail.</p>
-
-        <p><strong>5. What does TTT-IL replace vs. integrate?</strong> TTT-IL does not replace EnterpriseWorks, Polsky Center, The Garage, or other existing incubators. It adds a cross-institution scouting/selection layer and a shared pre-seed fund. Existing programs become feeders, not competitors. See Move&nbsp;3 implementation detail.</p>
-
-        <p><strong>6. Who pays for pilots, and how do you ensure procurement integrity?</strong> Adopting agencies fund pilots, with co-funding from the IL-AIC pilot fund. Procurement integrity is protected by the safeguards detailed under Move&nbsp;4: standardized rubric, pre-qualified vendor pool, staged contracting, competitive bids at each scaling stage, and public outcome reporting.</p>
-
-        <p><strong>7. How does Illinois&rsquo; existing privacy/legal environment affect adoption and startup formation?</strong> Illinois&rsquo; governance posture (BIPA, HB&nbsp;3773, AI Video Interview Act, WOPR) creates compliance costs but also predictability. Section&nbsp;9 argues that clear rules reduce deployment risk for adopters and position Illinois as a trust-differentiated market. The key is ensuring compliance expectations are clear, consistent, and paired with guidance&mdash;not just enforcement.</p>
-
-        <h3>What Would Strengthen This Analysis</h3>
-        <p>Future work should prioritize: (a) quantitative comparison of commercialization timelines across both ecosystems; (b) founder and investor surveys on friction points in Illinois tech transfer; (c) tracking actual outcomes from TTT.AI&rsquo;s spinoff portfolio as the program matures; (d) case studies of successful and unsuccessful Illinois AI commercialization journeys for pattern identification; and (e) analysis of how BIPA litigation costs and compliance requirements affect AI startup formation rates in Illinois compared to peer states.</p>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- KPI APPENDIX -->
-    <section id="kpis">
-        <h2><span class="section-number">12</span> KPI Appendix: A Practical Scorecard</h2>
-
-        <p>The KPIs below are designed for annual reporting and accountability. They balance activity metrics (what is happening) with outcome metrics (what results) and include trust and governance measures alongside commercialization throughput. Each KPI now includes data source, baseline guidance, and initial targets to move these from conceptual to operational.</p>
-
-        <h3>Commercialization Speed</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 18%;">KPI</th>
-                    <th style="width: 22%;">Definition</th>
-                    <th style="width: 20%;">Data Source &amp; Cadence</th>
-                    <th style="width: 20%;">Baseline &amp; Target</th>
-                    <th style="width: 20%;">Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Median deal cycle</strong></td>
-                    <td>Numerator: calendar days from invention disclosure to signed spinoff/license agreement. Denominator: all disclosures entering TTO pipeline in reporting year.</td>
-                    <td>TTO case management systems; reported annually. Baseline year: Year 1 of IL-AIC.</td>
-                    <td>Baseline: establish in Y1 (estimated 12&ndash;24 months currently). Target: 20% reduction by Y3.</td>
-                    <td>University TTOs (reported to IL-AIC)</td>
-                </tr>
-                <tr>
-                    <td><strong>Spinoffs formed</strong></td>
-                    <td># new AI-related spinoffs per year from participating institutions (entity incorporated + IP license executed).</td>
-                    <td>TTO annual reports + ISTC Innovation Index; reported annually.</td>
-                    <td>Baseline: aggregate from ISTC 2023 data. Target: 15% increase by Y3.</td>
-                    <td>IL-AIC + TTOs</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Venture Pipeline &amp; Capital</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 18%;">KPI</th>
-                    <th style="width: 22%;">Definition</th>
-                    <th style="width: 20%;">Data Source &amp; Cadence</th>
-                    <th style="width: 20%;">Baseline &amp; Target</th>
-                    <th style="width: 20%;">Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Investor-ready rate</strong></td>
-                    <td>% of TTT-IL cohort companies that achieve at least one of: signed term sheet, completed due diligence with institutional investor, or $100K+ in contracted revenue within 12&ndash;18 months of program entry.</td>
-                    <td>Fund manager quarterly reports; reported semi-annually.</td>
-                    <td>Baseline: establish in Y1 cohort. Target: 40%+ by Y3 (benchmark: top U.S. accelerators achieve 30&ndash;50%).</td>
-                    <td>Fund manager + IL-AIC</td>
-                </tr>
-                <tr>
-                    <td><strong>Follow-on funding</strong></td>
-                    <td>Total $ raised by TTT-IL portfolio companies within 18&ndash;24 months after pre-seed investment.</td>
-                    <td>Fund manager + Crunchbase/PitchBook cross-reference; reported annually.</td>
-                    <td>Baseline: $0 (new program). Target: 3x+ leverage ratio on public pre-seed by Y3.</td>
-                    <td>Fund manager</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Adoption &amp; Public Value</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 18%;">KPI</th>
-                    <th style="width: 22%;">Definition</th>
-                    <th style="width: 20%;">Data Source &amp; Cadence</th>
-                    <th style="width: 20%;">Baseline &amp; Target</th>
-                    <th style="width: 20%;">Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Paid pilots</strong></td>
-                    <td># pilots executed under statewide framework with contracted payment (&ge;$25K).</td>
-                    <td>DCEO pilot registry; reported quarterly.</td>
-                    <td>Baseline: 0 (new framework). Target: 10&ndash;15 pilots in Y1, 25+ in Y2.</td>
-                    <td>DCEO + adopting agencies</td>
-                </tr>
-                <tr>
-                    <td><strong>Conversion rate</strong></td>
-                    <td>% of completed pilots converting to multi-year deployment contracts within 12 months of pilot completion.</td>
-                    <td>DCEO procurement records; reported annually.</td>
-                    <td>Baseline: establish in Y2. Target: 30%+ conversion by Y3.</td>
-                    <td>DCEO + Chief Procurement Officer</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Trust &amp; Governance</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 18%;">KPI</th>
-                    <th style="width: 22%;">Definition</th>
-                    <th style="width: 20%;">Data Source &amp; Cadence</th>
-                    <th style="width: 20%;">Baseline &amp; Target</th>
-                    <th style="width: 20%;">Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Risk assessments</strong></td>
-                    <td>% of statewide-framework pilots completing a required algorithmic impact assessment before deployment.</td>
-                    <td>IL-AIC governance office registry; reported quarterly.</td>
-                    <td>Baseline: 0% (new requirement). Target: 100% of framework pilots by Y1.</td>
-                    <td>IL-AIC governance office</td>
-                </tr>
-                <tr>
-                    <td><strong>Transparency reporting</strong></td>
-                    <td>% of state agency AI deployments (post-pilot) with publicly accessible documentation describing: system purpose, data inputs, performance metrics, and appeal/override procedures. Excludes security-sensitive and trade-secret details per statutory carveouts.</td>
-                    <td>Agency self-reporting to IL-AIC; reported annually.</td>
-                    <td>Baseline: unknown (no current tracking). Target: 80% of new deployments documented by Y2.</td>
-                    <td>Deploying agencies + IL-AIC</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- REFERENCES -->
-    <section id="references">
-        <h2><span class="section-number">13</span> References</h2>
-
-        <div class="refs">
-            <p class="ref">[1] U.S. Bureau of Economic Analysis. (2024). Gross Domestic Product by State, 2024 (preliminary). Illinois GDP (current dollars): $1,137,244 million. Retrieved from <a href="https://www.bea.gov/data/gdp/gdp-state">https://www.bea.gov/data/gdp/gdp-state</a>. Secondary mirror: Trading Economics, <a href="https://tradingeconomics.com/">https://tradingeconomics.com/</a></p>
-
-            <p class="ref">[2] World Bank. (2024). Netherlands GDP (current US$). Retrieved from <a href="https://data.worldbank.org/country/netherlands">https://data.worldbank.org/country/netherlands</a></p>
-
-            <p class="ref">[3] AI Coalition 4 NL (AIC4NL). (2025). About AIC4NL &ndash; Organization, programmes, and strategic agenda. Retrieved from <a href="https://aic4nl.nl/en/">https://aic4nl.nl/en/</a>. Historical context: European Commission AI Watch (2021), Netherlands AI Strategy Report.</p>
-
-            <p class="ref">[4] Holland High Tech. (2025, December). Wennink Report: The road to future prosperity &ndash; Call for a National Investment and Innovation Agenda. Retrieved from <a href="https://hollandhightech.nl/en/news-calendar/">https://hollandhightech.nl/en/news-calendar/</a></p>
-
-            <p class="ref">[5] IO+. (2025, November). Dutch universities set new IP transfer standard for spinoffs. Retrieved from <a href="https://ioplus.nl/en/posts/dutch-universities-set-new-ip-transfer-standard-for-spinoffs">https://ioplus.nl/en/posts/dutch-universities-set-new-ip-transfer-standard-for-spinoffs</a></p>
-
-            <p class="ref">[6] LUMO Labs. (2025, December). LUMO Labs reappointed as fund manager by RVO for second TTT.AI pre-seed fund. Retrieved from <a href="https://lumolabs.io/">https://lumolabs.io/</a></p>
-
-            <p class="ref">[7] NWO (Netherlands Organisation for Scientific Research). (2022). AiNed &ndash; National Growth Fund. Retrieved from <a href="https://www.nwo.nl/en/researchprogrammes/national-growth-fund/ained">https://www.nwo.nl/en/researchprogrammes/national-growth-fund/ained</a></p>
-
-            <p class="ref">[8] Illinois General Assembly. Public Act 103-0804 (HB 3773), amending the Illinois Human Rights Act to regulate AI in employment decisions. Effective January 1, 2026. Retrieved from <a href="https://www.ilga.gov/legislation/publicacts/103/PDF/103-0804.pdf">https://www.ilga.gov/legislation/publicacts/103/PDF/103-0804.pdf</a>. Secondary analysis: Baker Donelson (2025, August), <a href="https://www.bakerdonelson.com/">https://www.bakerdonelson.com/</a></p>
-
-            <p class="ref">[9] Illinois General Assembly. Public Act 101-0260, Artificial Intelligence Video Interview Act. Effective January 1, 2020. Retrieved from <a href="https://www.ilga.gov/legislation/publicacts/101/PDF/101-0260.pdf">https://www.ilga.gov/legislation/publicacts/101/PDF/101-0260.pdf</a>. Secondary analysis: Saul Ewing LLP (2025, August), <a href="https://www.saul.com/insights/alert/">https://www.saul.com/insights/alert/</a></p>
-
-            <p class="ref">[9a] Illinois General Assembly. Public Act 104-0054, Wellness and Oversight for Psychological Resources Act (WOPR), codified at 225 ILCS 155. Effective August 1, 2025. Retrieved from <a href="https://www.ilga.gov/">https://www.ilga.gov/</a></p>
-
-            <p class="ref">[9b] Illinois General Assembly. Biometric Information Privacy Act (BIPA), 740 ILCS 14. Retrieved from <a href="https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=3004">https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=3004</a></p>
-
-            <p class="ref">[10] University of Illinois Research Park. (2025). EnterpriseWorks Incubator &ndash; Facts and Figures. Retrieved from <a href="https://researchpark.illinois.edu/">https://researchpark.illinois.edu/</a></p>
-
-            <p class="ref">[11] WIPO (World Intellectual Property Organization). (2024). Global Innovation Index 2024. Retrieved from <a href="https://www.wipo.int/gii/">https://www.wipo.int/gii/</a></p>
-
-            <p class="ref">[12] Built In Chicago. (2019, November 5). P33 wants to make Chicago a world-class tech hub. Retrieved from <a href="https://www.builtinchicago.org/">https://www.builtinchicago.org/</a></p>
-
-            <p class="ref">[13] TU Eindhoven. (2025, November). Dutch universities present updated Deal Terms for spin-offs. Retrieved from <a href="https://www.tue.nl/">https://www.tue.nl/</a></p>
-
-            <p class="ref">[14] University of Twente. (2025, November). New National IP Deal Term Principles strengthen ecosystem for academic spin-offs. Retrieved from <a href="https://www.utwente.nl/">https://www.utwente.nl/</a></p>
-
-            <p class="ref">[15] Wennink, P. (2025, December). The road to future prosperity [Report to Netherlands Ministry of Economic Affairs]. Retrieved from <a href="https://rapportwennink.nl/">https://rapportwennink.nl/</a></p>
-
-            <p class="ref">[16] Illinois Department of Commerce and Economic Opportunity. (2025). Office of Entrepreneurship, Innovation &amp; Technology. Retrieved from <a href="https://dceo.illinois.gov/">https://dceo.illinois.gov/</a></p>
-
-            <p class="ref">[17] U.S. Bureau of Economic Analysis. (2024). Gross Domestic Product by State, 2024. Retrieved from <a href="https://www.bea.gov/data/gdp/gdp-state">https://www.bea.gov/data/gdp/gdp-state</a></p>
-
-            <p class="ref">[18] World Economics. (2025). Netherlands GDP Comparative Analysis. Retrieved from <a href="https://www.worldeconomics.com/">https://www.worldeconomics.com/</a></p>
-
-            <p class="ref">[19] Northwestern University. (2025). McCormick School of Engineering. Retrieved from <a href="https://www.northwestern.edu/">https://www.northwestern.edu/</a></p>
-
-            <p class="ref">[20] University of Chicago. (2025). Department of Computer Science. Retrieved from <a href="https://www.uchicago.edu/">https://www.uchicago.edu/</a></p>
-
-            <p class="ref">[21] UIUC Department of Computer Science. (2025). AI and Machine Learning Research. Retrieved from <a href="https://cs.illinois.edu/">https://cs.illinois.edu/</a></p>
-
-            <p class="ref">[22] Delft University of Technology. (2025). AI Research Initiatives. Retrieved from <a href="https://www.tudelft.nl/">https://www.tudelft.nl/</a></p>
-
-            <p class="ref">[23] Eindhoven University of Technology. (2025). AI Innovation. Retrieved from <a href="https://www.tue.nl/">https://www.tue.nl/</a></p>
-
-            <p class="ref">[24] Utrecht University. (2025). Department of Information and Computing Sciences. Retrieved from <a href="https://www.uu.nl/">https://www.uu.nl/</a></p>
-
-            <p class="ref">[25] AI Coalition 4 NL. (2025). AIC4NL official website. Retrieved from <a href="https://aic4nl.nl/en/">https://aic4nl.nl/en/</a></p>
-
-            <p class="ref">[26] Abdullahi, K. M. (2026, February). What Illinois can learn from the Netherlands: AI ecosystem development strategies. Techn&eacute; AI White Paper Series.</p>
-
-            <p class="ref">[27] Illinois Innovation Network. (2025). Retrieved from <a href="https://iin.uillinois.edu/">https://iin.uillinois.edu/</a></p>
-
-            <p class="ref">[28] P33 Chicago. (2025). Five years of progress. Retrieved from <a href="https://www.p33chicago.com/impact">https://www.p33chicago.com/impact</a></p>
-
-            <p class="ref">[29] Crunchbase. (2025). AI funding trends year-end 2025. Retrieved from <a href="https://news.crunchbase.com/">https://news.crunchbase.com/</a></p>
-
-            <p class="ref">[30] Argonne National Laboratory. (2025). AI Research Programs. Retrieved from <a href="https://www.anl.gov/ai">https://www.anl.gov/ai</a></p>
-
-            <p class="ref">[31] Fermilab. (2025). Artificial Intelligence Research. Retrieved from <a href="https://computing.fnal.gov/artificial-intelligence/">https://computing.fnal.gov/artificial-intelligence/</a></p>
-
-            <p class="ref">[32] Governor&rsquo;s Office, State of Illinois. (2025). Illinois Quantum and Microelectronics Park announcement. Retrieved from <a href="https://gov.illinois.gov/">https://gov.illinois.gov/</a></p>
-
-            <p class="ref">[33] Illinois Science &amp; Technology Coalition. (2023). Illinois Innovation Index &ndash; University Entrepreneurship Report. Retrieved from <a href="https://www.istcoalition.org/">https://www.istcoalition.org/</a></p>
-
-            <p class="ref">[34] Discovery Partners Institute. (2025). About DPI. Retrieved from <a href="https://dpi.illinois.edu/">https://dpi.illinois.edu/</a></p>
-
-            <p class="ref">[35] CNBC. (2025). Top States for Business 2025. Retrieved from <a href="https://www.cnbc.com/top-states-for-business/">https://www.cnbc.com/top-states-for-business/</a></p>
-
-            <p class="ref">[36] Tracxn. (2025). AI startups in the Netherlands. Retrieved from <a href="https://tracxn.com/">https://tracxn.com/</a></p>
-
-            <p class="ref">[37] Techleap. (2025). State of Dutch Tech 2025. Amsterdam: Techleap.nl. Key data: 10,799 total companies, 9,248 startups, 268 scaleups, &euro;3.1B VC in 2024, scaleup ratio 21.5%. Retrieved from <a href="https://stateoftech.techleap.nl/">https://stateoftech.techleap.nl/</a></p>
-
-            <p class="ref">[38] Thematic Technology Transfer (TTT). (2025). Program results: 150+ startups since 2019, 40+ with follow-up funding, &euro;300M+ leveraged capital (10x+ on public investment). Retrieved from <a href="https://tech-transfer.nl/">https://tech-transfer.nl/</a></p>
-
-            <p class="ref">[39] Illinois Department of Human Rights. (2025). Draft Rules, Subpart J: Use of Artificial Intelligence in Employment (implementing Public Act 103-0804). Draft rules prepared but not yet formally published for public comment as of early 2026. Retrieved from <a href="https://www.illinois.gov/idhr">https://www.illinois.gov/idhr</a></p>
-
-            <p class="ref">[40] EY (Ernst &amp; Young). (2017). Catapult Network Review: Summary Findings. Commissioned by Innovate UK. Findings included &ldquo;inconsistent implementation&rdquo; across centres and over-reliance on public funding. Retrieved from <a href="https://www.gov.uk/government/publications/catapult-network-review">https://www.gov.uk/government/publications/catapult-network-review</a></p>
-
-            <p class="ref">[41] Massachusetts Executive Office of Technology Services and Security. (2024). 2024 AI Report to the Governor: Strategic Task Force Recommendations. Executive Order 629 (February 14, 2024). Key elements: MA AI Hub (three pillars: Equity &amp; Values, Infrastructure, Innovation &amp; Talent), expanded compute access, MA Data Commons, startup acceleration. Retrieved from <a href="https://www.mass.gov/info-details/artificial-intelligence-task-force">https://www.mass.gov/info-details/artificial-intelligence-task-force</a></p>
-
-            <p class="ref">[42] Goldman Sachs Global Investment Research. (2023). The potentially large effects of artificial intelligence on economic growth. Estimated 7% annual global GDP uplift from generative AI over 10 years. Retrieved from <a href="https://www.goldmansachs.com/insights/pages/generative-ai-could-raise-global-gdp-by-7-percent.html">https://www.goldmansachs.com/insights/pages/generative-ai-could-raise-global-gdp-by-7-percent.html</a></p>
-
-            <p class="ref">[43] CompTIA. (2025). Cyberstates 2025: The definitive guide to the U.S. tech workforce and economy. Illinois data: 99,000+ AI/tech workers in Chicago metro, $39.3B tech sector output, 45,000+ STEM degrees annually from IL institutions. Retrieved from <a href="https://www.cyberstates.org/">https://www.cyberstates.org/</a></p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <div class="page-footer">
-        <span class="logo-small">Techn&eacute;<span>AI</span></span> &nbsp;|&nbsp; AI Strategy &amp; Governance for Executives<br>
-        <span style="margin-top: 8px; display: inline-block;">&copy; 2026 Khullani M. Abdullahi, JD. This document is provided as a working draft for discussion among Illinois public, academic, and private-sector stakeholders.</span>
-    </div>
-
-</div>
-
+    <p>The Governor's order calls for <em>recommendations and feasibility assessments</em>. It does not itself impose new data-center licensing conditions, create new procurement thresholds, grant the Cabinet DCEO's economic-development powers, or appropriate money. Where an option requires a rule, contract term, statutory amendment, or appropriation, the Cabinet should identify the appropriate decision maker and legal route.<sup><a href="#ref-1">[1]</a></sup></p>
+</section><div class="rule"></div>
+
+<section id="march-update"><h2><span class="section-number">2</span> Since the March edition</h2>
+    <p>The March report proposed a statewide AI coordinating body and a Dutch-style research-to-company pipeline. This update also accounts for DoIT's existing inventory requirement and other changes in the operating context:</p>
+    <div class="table-scroll" role="region" aria-label="Updates since March"><table><thead><tr><th>Change</th><th>What it means for the strategy</th></tr></thead><tbody>
+      <tr><td><strong>Safety governance, September 22</strong><br>EO 2026-07 established the AI Cabinet.<sup><a href="#ref-1">[1]</a></sup></td><td>Work through the Cabinet's explicit risk mandate; establish a coordination interface for innovation rather than propose another first statewide AI body.</td></tr>
+      <tr><td><strong>Frontier law, July 6</strong><br>SB 315 became PA 104-0538.<sup><a href="#ref-2">[2]</a></sup></td><td>Prepare for the 2027 disclosure/fee gate and 2028 framework/audit duties for covered large frontier developers; do not present those duties as obligations for every AI vendor or state agency.</td></tr>
+      <tr><td><strong>Existing government controls</strong><br>DoIT policy effective April 1, 2025.<sup><a href="#ref-3">[3]</a></sup></td><td>Test inventory completeness and signed assessments. The policy already requires an inventory and agency-head-approved precommitment reports within its scope.</td></tr>
+      <tr><td><strong>Data centers, July 1</strong><br>DCEO stopped processing new incentive applications, while prior agreements remain in place.<sup><a href="#ref-4">[4]</a></sup></td><td>Evaluate what evidence and legal authority would justify future conditions or a changed incentive posture; do not presume applications are being processed.</td></tr>
+      <tr><td><strong>Research and commercialization</strong><br>DPI's August 16 theme call centers responsible AI and economic development; full proposals due October 15 from teams with September 15 letters of intent.<sup><a href="#ref-5">[5]</a></sup></td><td>Connect with eligible current proposals and subsequent themes instead of inventing an unrelated new institute.</td></tr>
+      <tr><td><strong>Dutch implementation</strong><br>TTT AI Rise succeeds the prior AI program; Groningen's computer is expected to be fully operational in early 2028.<sup><a href="#ref-11">[11]</a></sup><sup><a href="#ref-13">[13]</a></sup></td><td>Update the comparator: the expertise service can precede full compute hardware, and cross-program TTT outcomes cannot be labeled AI-only.</td></tr>
+    </tbody></table></div>
+</section><div class="rule"></div>
+
+<section id="mandates"><h2><span class="section-number">3</span> Authority and boundaries</h2>
+    <h3>The Cabinet's risk remit</h3>
+    <p>EO 2026-07 directs the Cabinet to develop recommendations and policies for responding to AI incidents, protecting public assets, learning from emerging incidents, and evaluating risk-management measures. It specifically calls for feasibility analysis of data-center incentive or approval conditions, energy burdens, procurement requirements, and legal remedies. The order names senior leaders from DoIT, IEMA-OHS, IDFPR, ICC, ISP, IDPH, and IEPA; outside experts and other agencies may be consulted. DCEO is <strong>not named among the order's enumerated agencies</strong>, so the Governor should designate a DCEO liaison or clarify a formal participation route for the economic-development decisions that concern it.<sup><a href="#ref-1">[1]</a></sup></p>
+    <h3>The frontier statute's narrower reach</h3>
+    <p>PA 104-0538 is a law for qualifying large frontier developers and their frontier models, with requirements for documented catastrophic-risk frameworks, audits, incident reporting, and disclosures under its statutory definitions. It is not a universal audit regime for every developer, deployer, hospital, employer, or public agency. The Act takes effect January 1, 2027, when a disclosure statement and fee gate for covered large frontier developers begins. Framework obligations begin January 1, 2028; annual independent audits start January 1, 2028 or 90 days after a developer first qualifies, whichever is later. IEMA-OHS has an implementation role. This report recommends mapping Cabinet incident procedures to the 2027 filing route and the later framework and audit controls.<sup><a href="#ref-2">[2]</a></sup></p>
+    <h3>DoIT's operating baseline</h3>
+    <p>The April 2025 policy applies to DoIT and agencies under the Governor's jurisdiction. It required a report on known AI systems deployed, in development, or in use, and an agency designee. Before a new commitment to procure, develop, or deploy an AI system, the utilizing agency must assess policy adherence, obtain agency-head signoff, and send its written report to DoIT at least 30 calendar days ahead. Protected and State data carry additional approval and notice requirements. These controls have a defined agency scope; they do not automatically govern independent constitutional officers, local governments, or private actors.<sup><a href="#ref-3">[3]</a></sup></p>
+    <div class="callout callout-light"><div class="kicker">Practical implication</div><p>Ask whether records match actual systems and contracts, whether reports arrive before commitments, and whether risks get remediated. Better compliance data would give the Cabinet a credible basis for its public-assets and procurement recommendations.</p></div>
+</section><div class="rule"></div>
+
+<section id="netherlands"><h2><span class="section-number">4</span> What the Netherlands teaches</h2>
+    <p>The Netherlands is useful as an <em>institutional design case</em>, not proof that one country outperforms Illinois or that a Dutch program caused a measured productivity gain. Its national authority, European cofunding, public university arrangements, and market structure differ from those of a U.S. state.</p>
+    <div class="table-scroll" role="region" aria-label="Dutch mechanisms and Illinois adaptations"><table><thead><tr><th>Dutch mechanism</th><th>Current evidence</th><th>Illinois adaptation to test</th></tr></thead><tbody>
+      <tr><td><strong>AIC4NL coordination</strong></td><td>The Dutch AI Coalition and AiNed joined January 1, 2025. AIC4NL describes itself as a public-private platform linking regional hubs and sector participants, <em>not a regulator</em>.<sup><a href="#ref-10">[10]</a></sup></td><td>Convene a voluntary DCEO–DPI–IIN network for research-to-market and responsible adoption. Exchange information with the Cabinet on overlapping risk issues; retain separate decision rights.</td></tr>
+      <tr><td><strong>TTT AI Rise</strong></td><td>Launched December 2025 as successor to TTT AI; receives &euro;10 million for a new five-year phase. The TTT operator reports over 150 startups and over &euro;300 million follow-on funding <em>across TTT themes since 2019</em>, not AI Rise alone.<sup><a href="#ref-11">[11]</a></sup></td><td>Start with an Illinois venture-pipeline census and a screened cohort; test handoffs among technology-transfer offices, customers, and investors before proposing a new fund.</td></tr>
+      <tr><td><strong>IP Deal Term Principles 2.0</strong></td><td>Published November 2025 as shared principles for university spinoff licensing; the Dutch university network says its members will use them. They are contractual practice, not a statutory command.<sup><a href="#ref-12">[12]</a></sup></td><td>Ask willing Illinois universities to co-design optional term sheets, exceptions, and a timed review; measure negotiation time and founder/investor experience.</td></tr>
+      <tr><td><strong>AI Factory</strong></td><td>European cofunding supported an investment of over &euro;200 million. The Groningen expertise center is already guiding projects; a September 21 update expects the supercomputer to be fully operational in early 2028.<sup><a href="#ref-13">[13]</a></sup><sup><a href="#ref-14">[14]</a></sup></td><td>Provide navigation to existing compute and technical expertise first; document unmet Illinois demand before seeking state-financed infrastructure.</td></tr>
+      <tr><td><strong>Frontier-safety diplomacy</strong></td><td>On September 22, international leaders issued a <em>call</em> for testing, independent evaluation, incident reporting, and possible international mechanisms. It is a diplomatic statement, not Dutch or EU law.<sup><a href="#ref-15">[15]</a></sup></td><td>Use the statement as a signal for interoperability of the Cabinet's incident and evaluation work, while grounding Illinois duties in actual law.</td></tr>
+    </tbody></table></div>
+    <p><strong>Cross-check from a U.S. peer:</strong> Massachusetts's 2026 Applied AI Models Innovation Challenge offers up to $1 million per eligible project, requires a 25% match, and asks for a shareable artifact. This is a program-design benchmark for applied research validation, not evidence that Illinois should copy its funding level or that the challenge has demonstrated economic returns.<sup><a href="#ref-16">[16]</a></sup></p>
+</section><div class="rule"></div>
+
+<section id="illinois-assets"><h2><span class="section-number">5</span> Illinois operating assets</h2>
+    <p>Illinois already has distributed infrastructure. DPI's 2026 research-theme solicitation makes socially and environmentally responsible AI central, asks for economic-development potential and technology transfer, and connects UIUC researchers with industry, national labs, and Chicago. Its full proposal deadline is October 15, 2026 for teams that submitted the required September 15 letter of intent. The Illinois Innovation Network has 15 hubs and a current council that can bring regional partners into a voluntary program.<sup><a href="#ref-5">[5]</a></sup><sup><a href="#ref-6">[6]</a></sup> DPI announced a permanent West Loop headquarters at 250 South Wacker Drive; physical partnership plans should align with that location.<sup><a href="#ref-25">[25]</a></sup></p>
+    <p>DCEO's Illinois Innovation Venture Fund, INVENT, is a <strong>$114 million direct equity program</strong> under the federal State Small Business Credit Initiative, not a new unrestricted AI grant fund. Its eligibility includes Illinois location and workforce requirements, C-corporation form, limits on round size, and private capital participation. Some AI ventures might qualify; the screening decision belongs with DCEO and the program, not the Cabinet.<sup><a href="#ref-7">[7]</a></sup><sup><a href="#ref-8">[8]</a></sup> DCEO's 2025 annual update provides an existing economic-development planning frame to align with, not a blank slate for a replacement plan.<sup><a href="#ref-9">[9]</a></sup></p>
+    <p>Compute is also a question of access and navigation. NSF reported that its National AI Research Resource had supported more than 600 teams and 6,000 students nationally through March 2026; DPI's call also lists access to NCSA facilities. Illinois should count local demand, allocations, denials, wait times, and support needs before assuming a state-owned machine is the bottleneck.<sup><a href="#ref-17">[17]</a></sup><sup><a href="#ref-5">[5]</a></sup></p>
+</section><div class="rule"></div>
+
+<section id="decision-table"><h2><span class="section-number">6</span> Decision and delivery table</h2>
+    <p>These are recommended next decisions. The authority column distinguishes what is already authorized from actions that require separate approval.</p>
+    <div class="table-scroll" role="region" aria-label="Decision owners, authority, deliverables, and dates"><table class="decision-table"><thead><tr><th>Decision / lead</th><th>Authority or permission needed</th><th>Next deliverable</th><th>Decision date</th></tr></thead><tbody>
+      <tr><td><strong>Cabinet chair and DoIT:</strong> first workplan</td><td>EO 2026-07; Governor appoints experts and chair; DoIT supports.<sup><a href="#ref-1">[1]</a></sup></td><td>Public charter of four workstreams, agency/expert leads, feasibility criteria, confidential incident channel, and report cadence.</td><td>Appointments by <strong>Oct. 22, 2026</strong>; workplan at first meeting.</td></tr>
+      <tr><td><strong>Cabinet with IEMA-OHS, DoIT, ISP, IDPH:</strong> incident and asset priorities</td><td>EO recommendations and existing agency roles; PA 104-0538 implementation remains with statutory actors.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup></td><td>Severity and escalation schema; prioritized public-asset list; secure sharing and redacted lessons format.</td><td>Draft by <strong>Dec. 23, 2026</strong>.</td></tr>
+      <tr><td><strong>DoIT and utilizing agencies:</strong> quality-check the existing inventory</td><td>April 2025 DoIT policy for Governor-jurisdiction agencies; agency heads own approvals.<sup><a href="#ref-3">[3]</a></sup></td><td>Reconciliation method against contracts and system owners; count of gaps and late reports; remediation owners.</td><td>Method by <strong>Oct. 24</strong>; first quality report by <strong>Dec. 23</strong>.</td></tr>
+      <tr><td><strong>Cabinet with ICC, IEPA and a DCEO liaison:</strong> data-center options</td><td>EO directs feasibility review; DCEO paused incentive processing. Any new binding conditions require the applicable legal process.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-4">[4]</a></sup></td><td>Alternatives matrix on grid cost allocation, safety, water, and disclosure; identify data, authority, and affected communities.</td><td>Options memo by <strong>Dec. 23</strong>; responsible authorities decide thereafter.</td></tr>
+      <tr><td><strong>DoIT, CMS/procurement counsel, pilot agencies:</strong> AI acquisition pack</td><td>EO procurement review, agency buying authority and DoIT's current policy; legal review of contract language.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-3">[3]</a></sup></td><td>Reusable risk-screen, test plan, vendor-data and audit-access questions, acceptance criteria, incident clause options, and lessons log.</td><td>Prototype by <strong>Dec. 23</strong>; review in 2027.</td></tr>
+      <tr><td><strong>DCEO, DPI, IIN and willing universities:</strong> voluntary innovation lane</td><td>Existing program/institutional mandates and agreements; financing and IP changes require each actor's approval.<sup><a href="#ref-5">[5]</a></sup><sup><a href="#ref-6">[6]</a></sup><sup><a href="#ref-7">[7]</a></sup></td><td>Pipeline map, cohort eligibility, optional IP term-sheet pilot, compute access diagnostic, and INVENT referral criteria.</td><td>Convene by <strong>Dec. 23</strong>; select pilot design in early 2027.</td></tr>
+      <tr><td><strong>General Assembly and workforce agencies:</strong> transition evidence</td><td>HB 5760 and HB 5761 are introduced proposals, not enacted appropriations or commissions.<sup><a href="#ref-20">[20]</a></sup><sup><a href="#ref-21">[21]</a></sup></td><td>Choose whether to advance or revise the legislative vehicle and define a workforce measurement brief without attributing job loss to AI by exposure alone.</td><td>Legislative decision in the <strong>2027 session</strong>.</td></tr>
+    </tbody></table></div>
+</section><div class="rule"></div>
+
+<section id="roadmap"><h2><span class="section-number">7</span> Sequence and deadlines</h2>
+    <div class="timeline"><div><span>Now &rarr; Oct. 24, 2026</span><h3>Constitute and scope</h3><p>Governor appoints the Cabinet's expert members within the order's 30-day window ending October 22. Chair identifies leads, consults DCEO for economic-development overlap, and asks DoIT for an inventory-reconciliation method. DPI's October 15 proposals proceed on their own selection track.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-5">[5]</a></sup></p></div>
+    <div><span>By Dec. 23, 2026</span><h3>Produce decision-ready options</h3><p>Cabinet produces an initial incident protocol, public-asset priorities, data-center options memo, and procurement checklist prototype. DCEO/DPI/IIN partners deliver a voluntary commercialization pipeline map. State each option's evidence, affected people, lead agency, cost range <em>only where estimated</em>, and legal route.</p></div>
+    <div><span>During 2027</span><h3>Pilot and revise</h3><p>Evaluate one or more competitively selected, mission-specific procurement pilots with written acceptance measures and human oversight. Let universities test optional licensing principles and track negotiation time. Track INVENT referrals against real eligibility. Implement the Act's 2027 disclosure and fee requirements through its statutory agencies, prepare for 2028 framework and audit duties, and give the Cabinet a publishable assessment before its December 31, 2027 sunset.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup></p></div>
+    <div><span>From Jan. 1, 2028</span><h3>Carry forward statutory duties</h3><p>The Act's frontier AI framework and independent third-party audit requirements begin for covered large frontier developers subject to statutory timing. Decide in 2027 which Cabinet recommendations require durable agency ownership or new legislation after the Cabinet sunsets.<sup><a href="#ref-2">[2]</a></sup></p></div></div>
+</section><div class="rule"></div>
+
+<section id="measurement"><h2><span class="section-number">8</span> Evidence and scorecard</h2>
+    <p>The policy baseline is observable; the performance baseline is mostly unmeasured. Publishing a dashboard with verified definitions is more useful than an unsupported forecast of gross state product, return on investment, jobs created, or comparative superiority.</p>
+    <div class="table-scroll" role="region" aria-label="Illinois AI strategy scorecard"><table><thead><tr><th>Measure</th><th>Available baseline as of Sept. 24</th><th>Data to establish / owner</th><th>Decision it informs</th></tr></thead><tbody>
+      <tr><td><strong>Cabinet delivery</strong></td><td>EO dated Sept. 22; expert appointments due within 30 days; sunset by Dec. 31, 2027.<sup><a href="#ref-1">[1]</a></sup></td><td>Appointment date, attendance, recommendation log, and public disposition / DoIT support.</td><td>Whether proposals are assigned and acted on.</td></tr>
+      <tr><td><strong>Agency AI visibility</strong></td><td>Policy requires initial inventory and subsequent precommitment reports; a reliable public total is not in the policy.<sup><a href="#ref-3">[3]</a></sup></td><td>Number of systems reconciled to contracts, system owners, protected-data authorizations, and late signoffs / DoIT and agencies.</td><td>Where to focus reviews and remediation.</td></tr>
+      <tr><td><strong>Incident handling</strong></td><td>EO assigns incident-policy work; DoIT policy already provides a security concern channel.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-3">[3]</a></sup></td><td>Severity taxonomy, reporting latency, time to triage, mitigations completed / Cabinet and participating agencies.</td><td>Whether escalation reduces operational exposure.</td></tr>
+      <tr><td><strong>Energy and infrastructure</strong></td><td>DCEO processing of new incentive applications stopped July 1; Cabinet instructed to evaluate grid/ratepayer impacts.<sup><a href="#ref-4">[4]</a></sup><sup><a href="#ref-1">[1]</a></sup></td><td>Project-specific projected load, cost allocation, water and resilience indicators; distinguish approved, paused, and proposed projects / ICC, IEPA, DCEO.</td><td>Incentive, permitting, and legislative options.</td></tr>
+      <tr><td><strong>Research-to-market</strong></td><td>IIN has 15 hubs; DPI has a responsible-AI research theme call; INVENT is a $114m broad equity program, not AI spend.<sup><a href="#ref-6">[6]</a></sup><sup><a href="#ref-5">[5]</a></sup><sup><a href="#ref-7">[7]</a></sup></td><td>Eligible disclosures, licensing days, startup formation, verified external capital, paid pilots and follow-on contracts by cohort / participating institutions and DCEO.</td><td>Whether shared process or additional funding is justified.</td></tr>
+      <tr><td><strong>Compute access</strong></td><td>NSF NAIRR has national usage, not an Illinois allocation baseline.<sup><a href="#ref-17">[17]</a></sup></td><td>Illinois applications, awards, waiting times, denial reasons, technical-assistance needs / DPI, IIN, NCSA partners.</td><td>Whether access support or new capacity is the binding constraint.</td></tr>
+      <tr><td><strong>Workforce transition</strong></td><td>HB 5760/5761 remain proposals. California's tracker illustrates a descriptive method, not causal attribution.<sup><a href="#ref-20">[20]</a></sup><sup><a href="#ref-21">[21]</a></sup><sup><a href="#ref-18">[18]</a></sup></td><td>Illinois claims and vacancies by occupation, industry, geography and AI-exposure proxy, with privacy controls / workforce agencies or an authorized research partner.</td><td>Where to investigate and target training, subject to further causal study.</td></tr>
+    </tbody></table></div>
+    <h3>Hypotheses to test, not forecasts to assert</h3>
+    <div class="compare-grid"><div class="compare-card"><h4>H1 / Licensing</h4><p>If willing university offices adopt common optional terms and an exception process, comparable spinoff cases will reach a signed license faster than their own prior cohorts. Log case complexity, institution, terms changed, days, and founder/investor feedback. A before-and-after result alone would not isolate causality.</p></div><div class="compare-card"><h4>H2 / Public buying</h4><p>If agencies use a shared AI review and acceptance pack, more pilots will close with documented performance, safety findings, and a clear go/no-go decision. Compare similar use cases and separately report transition to a competitively procured contract.</p></div><div class="compare-card"><h4>H3 / Visibility</h4><p>Reconciling the existing DoIT inventory to software contracts and system owners will identify omissions or stale entries. Count the net change and remedial action rather than treating a larger count as worsening risk.</p></div><div class="compare-card"><h4>H4 / Access</h4><p>If Illinois researchers have unmet compute demand despite NAIRR and existing campus capacity, record qualified applications, denials, queue times and support needs. Choose an access intervention only after the gap is documented.</p></div></div>
+    <p>For workforce signals, California links unemployment claims to occupational AI-exposure measures and reports subgroup trends. It does <em>not</em> show that AI caused any given separation; an Illinois analogue should preserve that distinction in every public release.<sup><a href="#ref-18">[18]</a></sup></p>
+</section><div class="rule"></div>
+
+<section id="constraints"><h2><span class="section-number">9</span> Constraints and alternatives</h2>
+    <h3>Safety and commercialization require different authorities</h3><p>The Cabinet can ask DCEO, DPI, and IIN for evidence and overlap, but the order gives it a risk-assessment remit. Voluntary innovation partnerships require their own governance, consent from institutions, financing eligibility, and conflict safeguards. Cabinet recommendations on ratepayer protection or procurement become binding only through a valid agency, regulatory, contract, or legislative pathway.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-4">[4]</a></sup></p>
+    <h3>Financing should follow eligibility and evidence</h3><p>INVENT can invest in eligible companies with private participation; it is not a grant account for public research projects or all AI founders.<sup><a href="#ref-7">[7]</a></sup><sup><a href="#ref-8">[8]</a></sup> A translational grant modeled on Massachusetts would need a defined appropriation or lawful funding source, eligible capital expenditures, matching terms, selection criteria, and audit of outcomes. A Dutch-style transfer vehicle would similarly need willing institutions and investors before state funds are committed.<sup><a href="#ref-16">[16]</a></sup><sup><a href="#ref-11">[11]</a></sup></p>
+    <h3>Legal and institutional context moves</h3><p>The White House issued a <em>legislative proposal</em> favoring federal preemption of some state AI laws in March 2026; the proposal itself is not a congressional preemption statute. Illinois decision makers should track federal legislation and litigation while acting within current law.<sup><a href="#ref-22">[22]</a></sup> Illinois's employment AI amendments took effect January 1, 2026, but the Department of Human Rights withdrew its proposed Subpart J rules in June; the statute remains distinct from withdrawn implementing text.<sup><a href="#ref-23">[23]</a></sup><sup><a href="#ref-24">[24]</a></sup></p>
+    <h3>The comparison has a specific use</h3><p>Dutch mechanisms suggest plausible ways to lower friction, but no source here establishes a causal Illinois–Netherlands performance gap or an Illinois GSP uplift. The TTT operator's aggregate startup and follow-on figures cover multiple themes; the Dutch factory's latest hardware date is 2028. The recommended Illinois response is a measured pilot with common definitions, not a claim that copying a national model will yield a fixed return.<sup><a href="#ref-11">[11]</a></sup><sup><a href="#ref-13">[13]</a></sup></p>
+</section><div class="rule"></div>
+
+<section id="method"><h2><span class="section-number">10</span> Method and source map</h2>
+    <p><strong>Method:</strong> documentary update as of September 24, 2026. The analysis gives priority to executive orders, enacted laws, agency policy and program pages, official university and program notices, and primary research or evaluation reports. It separates <em>existing duties</em> from <em>recommended decisions</em>, dates the implementation milestones, and treats program operator totals as reported outcomes rather than causal estimates. A source's publication date and a provision's effective date are different facts.</p>
+    <div class="table-scroll" role="region" aria-label="Claim to source map"><table><thead><tr><th>Claim class</th><th>Primary sources</th><th>How used</th></tr></thead><tbody>
+      <tr><td>Illinois governance and statutory timing</td><td><a href="#ref-1">[1]</a>, <a href="#ref-2">[2]</a>, <a href="#ref-3">[3]</a>, <a href="#ref-4">[4]</a></td><td>Scope, responsibilities, pause, deadlines; proposals are labeled.</td></tr>
+      <tr><td>Illinois programs and bills</td><td><a href="#ref-5">[5]</a>–<a href="#ref-9">[9]</a>, <a href="#ref-20">[20]</a>–<a href="#ref-21">[21]</a>, <a href="#ref-25">[25]</a></td><td>Existing assets, eligibility, current proposals and location.</td></tr>
+      <tr><td>Dutch mechanisms</td><td><a href="#ref-10">[10]</a>–<a href="#ref-15">[15]</a></td><td>Institutional mechanisms, operator-reported outcomes, facility schedule, diplomatic statement.</td></tr>
+      <tr><td>U.S. design and measurement peers</td><td><a href="#ref-16">[16]</a>–<a href="#ref-19">[19]</a></td><td>Grant conditions, compute access, descriptive workforce signals, procurement learning.</td></tr>
+      <tr><td>Federal and employment-policy status</td><td><a href="#ref-22">[22]</a>–<a href="#ref-24">[24]</a></td><td>Proposal versus law; enacted statute versus withdrawn rules.</td></tr>
+    </tbody></table></div>
+    <p class="small muted"><strong>Amendment note:</strong> This September 24 edition replaces the March 2026 comparative paper's stale coordination recommendation, historical Dutch program descriptions, and unsupported outcome projections. If the report is updated again, record the date and changed claims next to the affected sections.</p>
+</section><div class="rule"></div>
+
+<section id="references"><h2><span class="section-number">11</span> References</h2><p class="small muted">Primary source documents and official program pages consulted for this edition. Numbered citations above jump to the corresponding entry.</p>
+<div class="refs">
+<p class="ref" id="ref-1">[1] State of Illinois, <em>Executive Order 2026-07: Executive Order to Create Illinois Artificial Intelligence Cabinet</em>, issued and filed September 22, 2026. <a href="https://www.illinois.gov/government/executive-orders/executive-order.executive-order-2026-07.2026.html">Official order</a>.</p>
+<p class="ref" id="ref-2">[2] Illinois General Assembly, <em>Public Act 104-0538 (SB 315), Artificial Intelligence Safety Measures Act</em>, signed July 6, 2026; Act effective January 1, 2027, with specified 2028 duties. <a href="https://www.ilga.gov/documents/legislation/PublicActs/104/104-0538.htm">Enacted text</a>; <a href="https://www.ilga.gov/Legislation/BillStatus?DocNum=315&amp;DocTypeID=SB&amp;GA=104&amp;GAID=18&amp;SessionID=114">bill history</a>.</p>
+<p class="ref" id="ref-3">[3] Illinois Department of Innovation and Technology, <em>Policy on the Acceptable and Responsible Use of Artificial Intelligence</em>, effective April 1, 2025, §§ 2, 4–5, 12 and appendix. <a href="https://doit.illinois.gov/content/dam/soi/en/web/doit/documents/support/policies/2021/20250401-DoIT-AI%20Policy-v2-%20A11Y.pdf">Official policy PDF</a>.</p>
+<p class="ref" id="ref-4">[4] Illinois Department of Commerce and Economic Opportunity, <em>Data Center Investment Tax Exemptions and Credits</em>, notice of no further application processing as of July 1, 2026. <a href="https://dceo.illinois.gov/expandrelocate/incentives/datacenters.html">Program page</a>; Governor's <a href="https://gov-pritzker-newsroom.prezly.com/gov-pritzker-pauses-new-data-center-tax-incentives">June 5 directive</a> says prior agreements will be honored and outlines proposed legislative principles.</p>
+<p class="ref" id="ref-5">[5] Discovery Partners Institute, University of Illinois, <em>Instructions for Submitting a Proposal for an Institute Theme</em>, call posted August 16, 2026. <a href="https://dpi.illinois.edu/research/research-proposals/full-details">Call and instructions</a>.</p>
+<p class="ref" id="ref-6">[6] Illinois Innovation Network, <em>IIN Council Meeting Recap</em>, September 17, 2026. <a href="https://iin.uillinois.edu/about-us/news/iin-council-meeting-recap-sept-17-2026/">IIN update</a>.</p>
+<p class="ref" id="ref-7">[7] Illinois DCEO, <em>INVENT: Illinois Innovation Venture Fund</em>. <a href="https://dceo.illinois.gov/illinoisinvent.html">Program description</a>.</p>
+<p class="ref" id="ref-8">[8] Illinois DCEO, <em>INVENT Eligibility</em>. <a href="https://dceo.illinois.gov/illinoisinvent/eligibility.html">Eligibility page</a>.</p>
+<p class="ref" id="ref-9">[9] Illinois DCEO, <em>Statewide Economic Development Plan 2025 Annual Update</em>. <a href="https://dceo.illinois.gov/content/dam/soi/en/web/dceo/aboutdceo/reportsrequiredbystatute/2025-economic-growth-plan-annual-update.pdf">Official PDF</a>.</p>
+<p class="ref" id="ref-10">[10] AI Coalition 4 NL, <em>Dutch AI Coalition and AiNed Join Forces in AI Coalition 4 NL</em>, January 8, 2025. <a href="https://aic4nl.nl/en/nieuws/nederlandse-ai-coalitie-en-ained-bundelen-hun-krachten-in-ai-coalitie-4-nl/">Coalition announcement</a>.</p>
+<p class="ref" id="ref-11">[11] Thematische Technologie Transfer, <em>Successful Innovation Model Continues: New TTT Programs Launched</em>, December 18, 2025. <a href="https://tech-transfer.nl/en/succesvol-innovatiemodel-krijgt-vervolg-nieuwe-ttt-programmas-van-start/">Program announcement</a>.</p>
+<p class="ref" id="ref-12">[12] 4TU.Federation, <em>New Standard for Intellectual Property Licensing</em>, November 18, 2025. <a href="https://www.4tu.nl/en/news/news/New-standard-for-intellectual-property-licensing/">University network announcement</a>.</p>
+<p class="ref" id="ref-13">[13] Nederlandse AI-fabriek, <em>AI-supercomputer duurzaam gehuisvest bij Eurofiber in Groningen</em>, September 21, 2026. <a href="https://nlaifabriek.nl/ai-supercomputer-bij-eurofiber-in-groningen/">Factory update (Dutch)</a>.</p>
+<p class="ref" id="ref-14">[14] Government of the Netherlands, <em>Kamerbrief over honorering EU-financiering voor AI-fabriek in Groningen</em>, October 13, 2025; investment amount in <a href="https://zoek.officielebekendmakingen.nl/kst-26643-1424.html">official parliamentary document</a>. <a href="https://www.rijksoverheid.nl/documenten/2025/10/13/kamerbrief-honorering-eu-financiering-voor-de-ai-fabriek-in-groningen">Government summary</a>.</p>
+<p class="ref" id="ref-15">[15] Government of the Netherlands, <em>A Call for Control of Frontier AI Models</em>, diplomatic statement, September 22, 2026. <a href="https://www.government.nl/documents/2026/09/22/a-call-for-control-of-frontier-ai-models">Statement</a>.</p>
+<p class="ref" id="ref-16">[16] Massachusetts AI Hub / MassTech Collaborative, <em>Massachusetts Applied AI Models Innovation Challenge</em>, 2026 Round 2 program requirements. <a href="https://aihub.masstech.org/massachusetts-ai-models-innovation-challenge">Challenge page</a>.</p>
+<p class="ref" id="ref-17">[17] U.S. National Science Foundation, <em>NAIRR at 2 Years: Advancing American Artificial Intelligence Innovation and Leadership</em>, March 19, 2026. <a href="https://www.nsf.gov/cise/updates/nairr-2-years-advancing-american-artificial-intelligence">NSF update</a>.</p>
+<p class="ref" id="ref-18">[18] California Policy Lab and California Employment Development Department, <em>California AI-Unemployment Tracker</em>, June 25, 2026, with August monthly update. <a href="https://capolicylab.org/california-ai-unemployment-tracker/">Tracker and methodology</a>.</p>
+<p class="ref" id="ref-19">[19] U.S. Government Accountability Office, <em>Artificial Intelligence Acquisitions: Agencies Should Collect and Apply Lessons Learned to Improve Future Procurements</em>, GAO-26-107859, April 13, 2026. <a href="https://www.gao.gov/products/gao-26-107859">GAO report</a>.</p>
+<p class="ref" id="ref-20">[20] Illinois General Assembly, <em>HB 5760, Commission on Artificial Intelligence and Workforce Transition Act</em>, introduced May 5, 2026; pending legislation. <a href="https://www.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400HB5760.html">Bill status</a>.</p>
+<p class="ref" id="ref-21">[21] Illinois General Assembly, <em>HB 5761, DCEO–AI Workforce Transition Appropriation</em>, introduced May 5, 2026; proposed $150,000 appropriation. <a href="https://www.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400HB5761.html">Bill status</a>.</p>
+<p class="ref" id="ref-22">[22] White House, <em>National AI Legislative Framework</em>, March 20, 2026. <a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/">Legislative proposal announcement</a>.</p>
+<p class="ref" id="ref-23">[23] Illinois General Assembly, <em>Public Act 103-0804 (HB 3773)</em>, employment AI amendments effective January 1, 2026. <a href="https://www.ilga.gov/legislation/publicacts/103/PDF/103-0804.pdf">Enacted act PDF</a>.</p>
+<p class="ref" id="ref-24">[24] Illinois Secretary of State, <em>Illinois Register</em>, vol. 50, issue 26, June 26, 2026, p. 8755 (notice of withdrawal of Department of Human Rights proposed Subpart J). <a href="https://www.ilsos.gov/content/dam/departments/index/register/volume50/register_volume50_26.pdf">Official register PDF</a>.</p>
+<p class="ref" id="ref-25">[25] Illinois Innovation Network / Discovery Partners Institute, <em>Discovery Partners Institute Announces New West Loop Headquarters</em>, February 27, 2026. <a href="https://iin.uillinois.edu/about-us/news/discovery-partners-institute-announces-new-west-loop-headquarters/">DPI headquarters announcement</a>.</p>
+</div></section>
+<footer class="page-footer"><span class="logo-small">Techn&eacute;<span>AI</span></span> &nbsp;|&nbsp; Illinois AI Strategy<br><span class="footer-note">&copy; 2026 Khullani M. Abdullahi, JD &nbsp;&bull;&nbsp; Updated September 24, 2026 &nbsp;&bull;&nbsp; <a href="#top">Return to top</a></span></footer>
+</main>
 </body>
 </html>
