@@ -183,6 +183,26 @@
             font-weight: 400;
         }
 
+        .cover-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            margin-top: 30px;
+            padding: 12px 22px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .cover-download:hover { background: var(--gray-100); transform: translateY(-2px); }
+        .cover-download:focus-visible { outline: 3px solid var(--secondary-light); outline-offset: 4px; }
+        .cover-download-note { margin-top: 10px; color: rgba(255,255,255,.7); font-size: 12px; }
+
         .cover-footer {
             display: flex;
             justify-content: space-between;
@@ -731,6 +751,7 @@
            ========================================================================== */
         @media print {
             .cover { min-height: 100vh; page-break-after: always; }
+            .cover-download, .cover-download-note { display: none; }
             .toc-page { page-break-after: always; }
             section { break-inside: auto; }
             h1, h2, h3 { page-break-after: avoid; }
@@ -809,6 +830,8 @@
         <div class="cover-tag">September 24, 2026 &bull; Updated edition</div>
         <h1 class="cover-title">Illinois AI Strategy<br>After the Cabinet</h1>
         <p class="cover-subtitle">Four decisions for a state that must govern frontier risk, protect public assets, and convert research into economic value. A Netherlands comparison for implementation, not imitation.</p>
+        <a class="cover-download" href="https://techne.ai/illinois-strategy/download/">Download or share the PDF &rarr;</a>
+        <p class="cover-download-note">Read the complete brief below. PDF access requires a verified work email.</p>
     </div>
     <div class="cover-footer"><div class="cover-meta"><strong>Khullani M. Abdullahi, JD</strong><br>Founder &amp; Principal, Techn&eacute; AI<br><strong>Evidence cutoff:</strong> September 24, 2026</div>
     <div class="cover-visual" aria-hidden="true"><svg viewBox="0 0 140 140" fill="none"><circle cx="70" cy="70" r="64" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/><circle cx="70" cy="70" r="48" stroke="rgba(180,77,224,.35)" stroke-width="2"/><circle cx="70" cy="70" r="32" stroke="rgba(180,77,224,.25)" stroke-width="1.5"/><circle cx="70" cy="70" r="16" fill="rgba(180,77,224,.25)"/><circle cx="70" cy="70" r="6" fill="#b44de0"/><path d="M70 6 L70 28 M70 112 L70 134 M6 70 L28 70 M112 70 L134 70" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/></svg></div></div>
